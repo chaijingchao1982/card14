@@ -1,0 +1,61 @@
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+#include		<resource.h>
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+#define	ICO_MAIN		0x1000	//图标
+#define	IDB_1			1
+#define	IDB_2			2
+#define	IDB_3			3
+#define	IDB_4			4
+#define	DLG_HELP		1
+#define	DLG_ME		2
+;**********************************
+#define	IDM_MAIN		100//菜单
+#define	IDM_HELP		101	
+#define	IDM_ME		102
+#define	IDM_EXIT		103
+#define	IDM_NEW		104
+#define	IDC_BMP		108
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+ICO_MAIN	ICON			"Main.ico"
+IDB_1		BITMAP		"puke.bmp"
+IDB_2		BITMAP		"背.bmp"
+IDB_3		BITMAP		"空.bmp"
+IDB_4		BITMAP		"小柴.bmp"
+;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+IDM_MAIN				menu	discardable
+BEGIN
+	popup	"GAME(&G)"
+	BEGIN
+		menuitem	"NEW GAME(&N)",IDM_NEW
+		menuitem	separator
+		menuitem	"EXIT(&X)",IDM_EXIT
+	END
+	popup	"HELP(&H)"
+	BEGIN
+		menuitem	"GEME HELP(&P)",IDM_HELP
+		menuitem	separator
+		menuitem	"ABOUT ME(&A)",IDM_ME
+	END
+END
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+DLG_HELP		DIALOG 100, 100, 300, 110
+STYLE		DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION	"游戏帮助"
+FONT 9,	"宋体"
+{
+ ICON ICO_MAIN, -1, 10, 10, 40, 40
+ LTEXT "                       14点游戏说明\n先说两个基本概念: \n    牌的面值:牌面的大小就是牌的面值,如:A为1,2为2,...,K为13等. \n    牌的分值:牌的花色就是牌的分值,规定一张黑桃为4分,红桃3分,梅花2分,方片1分.\n玩法:\n    在手中选好牌去“钓”鱼池中的一张牌(鼠标左键钓鱼),选好的牌和鱼的面值相加的和为14才能钓(如:6钓8,1和3钓10,2和3和5钓4等),然后再在鱼池中“放鱼”一只(右键放鱼),相钓的牌的分值会加到你的总分中,结束时总分高者胜.", -1, 40, 10, 255, 85, WS_BORDER
+
+}
+;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+DLG_ME		DIALOG 100, 100, 300, 100
+STYLE		DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION	"关于作者"
+FONT 9,	"宋体"
+{
+ ;ICON ICO_MAIN, -1, 10, 10, 40, 40
+ ;CONTROL IDB_4, IDC_BMP, "Static", SS_BITMAP | WS_CHILD | WS_VISIBLE, 5, 10, 20, 20
+ LTEXT "                       关于作者\n    CJC,22岁,喜欢ASM,每天编程,忙着找工作,游戏是用MASM8.0写的。感谢芳的测试工作！\n    想给我写信就写吧。email:gouweiba@126.com\n    QQ：124798013               All Copyright\n                                   2004 12 18", -1, 95, 25, 190, 52, WS_BORDER
+
+}
+;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
