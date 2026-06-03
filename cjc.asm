@@ -3,7 +3,7 @@
 		.model	flat, stdcall
 		option	casemap :none
 ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-; Include ÎÄ¼ş¶¨Òå
+; Include æ–‡ä»¶å®šä¹‰
 ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 include			windows.inc
 include			gdi32.inc
@@ -13,13 +13,13 @@ includelib		user32.lib
 include			kernel32.inc
 includelib		kernel32.lib
 ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-; Equ µÈÖµ¶¨Òå
+; Equ ç­‰å€¼å®šä¹‰
 ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 ;*****************************
 width_bmp		equ	71
 height_bmp		equ	96
-;*****************************;×ÊÔ´
-ICO_MAIN			equ	1000h		;Í¼±ê
+;*****************************;èµ„æº
+ICO_MAIN			equ	1000h		;å›¾æ ‡
 IDB_1				equ	1
 IDB_2				equ	2
 IDB_3				equ	3
@@ -27,7 +27,7 @@ IDB_4				equ	4
 DLG_HELP			equ	1
 DLG_ME			equ	2
 
-;*****************************²Ëµ¥
+;*****************************èœå•
 IDM_MAIN			equ	100
 IDM_HELP			equ	101 
 IDM_ME			equ	102 
@@ -38,33 +38,33 @@ WM_NEWGAME			equ	WM_USER+200h
 WM_computer_fish	equ	WM_USER+300h
 ;WM_cjc				equ	WM_USER+400h
 ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-; Êı¾İ¶Î
+; æ•°æ®æ®µ
 ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 		.data?
-;***************************************³ÌĞòËùÓÃµÄÈ«¾Ö±äÁ¿
-hWinMain			dd		?						;Ö÷´°¿Ú¾ä±ú
-hdlg_help		dd		?						;help´°¿Ú¾ä±ú
+;***************************************ç¨‹åºæ‰€ç”¨çš„å…¨å±€å˜é‡
+hWinMain			dd		?						;ä¸»çª—å£å¥æŸ„
+hdlg_help		dd		?						;helpçª—å£å¥æŸ„
 hdlg_me			dd		?
-hMenu				dd		?						;²Ëµ¥¾ä±ú
-hInstance		dd		?						;±¾³ÌĞòµÄÊµÀı×Ó¾ä±ú
-hDc_map			dd		?						;µØÍ¼Î»Í¼¾ä±ú
-hDc_back			dd		?						;ÅÆµÄ±³ÃæµÄÎ»Í¼¾ä±ú
-hDc_kong			dd		?						;Ã»ÓĞÅÆÊ±¿ÕÎ»µÄÎ»Í¼¾ä±ú
-dwNowBack		dd		?						;´¢´æÎ»Í¼¾ä±úµÄÖĞ¼ä±äÁ¿
+hMenu				dd		?						;èœå•å¥æŸ„
+hInstance		dd		?						;æœ¬ç¨‹åºçš„å®ä¾‹å­å¥æŸ„
+hDc_map			dd		?						;åœ°å›¾ä½å›¾å¥æŸ„
+hDc_back			dd		?						;ç‰Œçš„èƒŒé¢çš„ä½å›¾å¥æŸ„
+hDc_kong			dd		?						;æ²¡æœ‰ç‰Œæ—¶ç©ºä½çš„ä½å›¾å¥æŸ„
+dwNowBack		dd		?						;å‚¨å­˜ä½å›¾å¥æŸ„çš„ä¸­é—´å˜é‡
 hDc_me			dd		?
-hitpoint			POINT <>						;Êó±ê°´ÏÂÊ±µÄ×ø±ê
-who_fish			dd		?						;¿ØÖÆÓÎÏ·Á÷³ÌµÄÂÖ»»±äÁ¿
+hitpoint			POINT <>						;é¼ æ ‡æŒ‰ä¸‹æ—¶çš„åæ ‡
+who_fish			dd		?						;æ§åˆ¶æ¸¸æˆæµç¨‹çš„è½®æ¢å˜é‡
 random_count	dd		?
 TimerID			dd		?
-;***************************************ÕâÀïÊÇµçÄÔÖÇÄÜµöÓã×Ó³ÌĞòÖĞËùÓÃµ½µÄÒ»Ğ©±äÁ¿
+;***************************************è¿™é‡Œæ˜¯ç”µè„‘æ™ºèƒ½é’“é±¼å­ç¨‹åºä¸­æ‰€ç”¨åˆ°çš„ä¸€äº›å˜é‡
 fish_way_hand	db		?
 fish_way_hand1	db		?
 fish_way_fishes	dd	?
 ;***************************************
-lp_puke_head	dd		?						;Î´·¢³öÈ¥µÄÅÆµÄÍ·Ö¸Õë
-lp_puke_weiba	dd		?						;Î´·¢³öÈ¥µÄÅÆµÄÎ²Ö¸Õë
-my_will_fish	dd		?						;ÎÒÊÖÖĞ³öÈ¥µÄÅÆµÄÕÅÊı
-;***************************************Íæ¼ÒÊÖÖĞÈıÕÅÅÆµÄ×ø±ê
+lp_puke_head	dd		?						;æœªå‘å‡ºå»çš„ç‰Œçš„å¤´æŒ‡é’ˆ
+lp_puke_weiba	dd		?						;æœªå‘å‡ºå»çš„ç‰Œçš„å°¾æŒ‡é’ˆ
+my_will_fish	dd		?						;æˆ‘æ‰‹ä¸­å‡ºå»çš„ç‰Œçš„å¼ æ•°
+;***************************************ç©å®¶æ‰‹ä¸­ä¸‰å¼ ç‰Œçš„åæ ‡
 my_hand1_x		dd		?
 my_hand1_y		dd		?
 my_hand2_x		dd		?
@@ -73,48 +73,48 @@ my_hand3_x		dd		?
 my_hand3_y		dd		?
 
 ;***************************************
-add_points		db		?						;²¹³äµÄ·Ö
-can_huanpai		db		?						;¶ÔÊÖÄÜ·ñ»»ÅÆ
-;***************************************×Ö·û´®
-sz_printf		db		128d  dup	(?)	;ÏÔÊ¾Ê±ËùÓÃµÄ×Ö·û´®	
+add_points		db		?						;è¡¥å……çš„åˆ†
+can_huanpai		db		?						;å¯¹æ‰‹èƒ½å¦æ¢ç‰Œ
+;***************************************å­—ç¬¦ä¸²
+sz_printf		db		128d  dup	(?)	;æ˜¾ç¤ºæ—¶æ‰€ç”¨çš„å­—ç¬¦ä¸²	
 
-;***************************************ÊµÑéÓÃ±äÁ¿
+;***************************************å®éªŒç”¨å˜é‡
 ;sz_printf_shiyan	db	128d  dup	(?)
 ;can_fish			dd		?
-;***************************************Ëæ»ú±äÁ¿´æ·Å´¦
-;wash_random		db		60d	dup	(?)	;±¾À´Ó¦¸ÃÊÇ52dµÄ£¬µ«ÊÇÎÒÅÂÒç³ö£¬ËùÒÔ¶à·ÖËü¼¸¸ö×Ö½Ú£¬ºÇºÇ£¬²ÙÄÇ
+;***************************************éšæœºå˜é‡å­˜æ”¾å¤„
+;wash_random		db		60d	dup	(?)	;æœ¬æ¥åº”è¯¥æ˜¯52dçš„ï¼Œä½†æ˜¯æˆ‘æ€•æº¢å‡ºï¼Œæ‰€ä»¥å¤šåˆ†å®ƒå‡ ä¸ªå­—èŠ‚ï¼Œå‘µå‘µï¼Œæ“é‚£
 
-;***************************************Íæ¼ÒºÍ¶ÔÊÖÊÖÖĞµÄÈıÕÅÅÆ
-my_hand			db		3d		dup	(?)	;ÎÒÊÖÖĞµÄÅÆ
-no1				dd		?						;ÓÃÀ´¸ôÀëÊı¾İ
+;***************************************ç©å®¶å’Œå¯¹æ‰‹æ‰‹ä¸­çš„ä¸‰å¼ ç‰Œ
+my_hand			db		3d		dup	(?)	;æˆ‘æ‰‹ä¸­çš„ç‰Œ
+no1				dd		?						;ç”¨æ¥éš”ç¦»æ•°æ®
 
-my_hand_num		db		3d		dup	(?)	;ÎÒÊÖÖĞµÄÅÆµÄ´óĞ¡
-no2				dd		?						;ÓÃÀ´¸ôÀëÊı¾İ
+my_hand_num		db		3d		dup	(?)	;æˆ‘æ‰‹ä¸­çš„ç‰Œçš„å¤§å°
+no2				dd		?						;ç”¨æ¥éš”ç¦»æ•°æ®
 
-my_aogo			db		4d		dup	(?)	;ÎÒÉÏ°ÑµöÓãµÄ×éºÏ
-no3				dd		?						;ÓÃÀ´¸ôÀëÊı¾İ
+my_aogo			db		4d		dup	(?)	;æˆ‘ä¸ŠæŠŠé’“é±¼çš„ç»„åˆ
+no3				dd		?						;ç”¨æ¥éš”ç¦»æ•°æ®
 
-your_hand		db		3d		dup	(?)	;¶ÔÊÖÊÖÖĞµÄÅÆ
-no4				dd		?						;ÓÃÀ´¸ôÀëÊı¾İ
+your_hand		db		3d		dup	(?)	;å¯¹æ‰‹æ‰‹ä¸­çš„ç‰Œ
+no4				dd		?						;ç”¨æ¥éš”ç¦»æ•°æ®
 
-your_aogo		db		4d		dup	(?)	;¶ÔÊÖÉÏ°ÑµöÓãµÄ×éºÏ
-no6				dd		?						;ÓÃÀ´¸ôÀëÊı¾İ
+your_aogo		db		4d		dup	(?)	;å¯¹æ‰‹ä¸ŠæŠŠé’“é±¼çš„ç»„åˆ
+no6				dd		?						;ç”¨æ¥éš”ç¦»æ•°æ®
 
-your_hand_num	db		3d		dup	(?)	;¶ÔÊÖÊÖÖĞµÄÅÆµÄ´óĞ¡
-no5				dd		?						;ÓÃÀ´¸ôÀëÊı¾İ
+your_hand_num	db		3d		dup	(?)	;å¯¹æ‰‹æ‰‹ä¸­çš„ç‰Œçš„å¤§å°
+no5				dd		?						;ç”¨æ¥éš”ç¦»æ•°æ®
 
 
-;***************************************Íæ¼ÒºÍ¶ÔÊÖ±¾¾ÖµÄ×ÜµÃ·Ö
+;***************************************ç©å®¶å’Œå¯¹æ‰‹æœ¬å±€çš„æ€»å¾—åˆ†
 no7				db		?,?,?,?
 my_points		db		?
 your_points		db		?
 ;***************************************
-puke				db		54d	dup	(?)	;ËùÓĞµÄÆË¿Ë±äÁ¿
-puke_wash		db		54d	dup	(?)	;Ï´ÅÆ×¨ÓÃµÄ¿Õ¼ä
+puke				db		54d	dup	(?)	;æ‰€æœ‰çš„æ‰‘å…‹å˜é‡
+puke_wash		db		54d	dup	(?)	;æ´—ç‰Œä¸“ç”¨çš„ç©ºé—´
 
-fishes			db		8d		dup	(?)	;Óã³Ø
-fish_num			db		8d		dup	(?)	;Óã³ØÖĞÓãµÄÅÆÃæÖµ
-who_will			db		3d		dup	(?)	;ÎÒÊÖÖĞÉÏÈ¥µÄÅÆµÄÖ¸Ê¾±äÁ¿£¬¿´¿´ÈıÕÅÅÆË­ÉÏÈ¥ÁË
+fishes			db		8d		dup	(?)	;é±¼æ± 
+fish_num			db		8d		dup	(?)	;é±¼æ± ä¸­é±¼çš„ç‰Œé¢å€¼
+who_will			db		3d		dup	(?)	;æˆ‘æ‰‹ä¸­ä¸Šå»çš„ç‰Œçš„æŒ‡ç¤ºå˜é‡ï¼Œçœ‹çœ‹ä¸‰å¼ ç‰Œè°ä¸Šå»äº†
 ;***************************************
 your_max_point	db		?
 no					db		?,?
@@ -122,37 +122,37 @@ no					db		?,?
 
 ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 		.const
-;****************************************ÓÎÏ·ÖĞËùÓÃÊÇ×Ö·û´®
-sz_num			db		'Ä¿Ç°µÃ·Ö',0
+;****************************************æ¸¸æˆä¸­æ‰€ç”¨æ˜¯å­—ç¬¦ä¸²
+sz_num			db		'ç›®å‰å¾—åˆ†',0
 szClassName		db		'MyClass',0
-szCaptionMain	db		'~~~14µãµöÓã~~~1.0µ¥»ú°æ~~~',0
-;****************************************ÊµÑéÓÃµÄ×Ö·û´®
+szCaptionMain	db		'~~~14ç‚¹é’“é±¼~~~1.0å•æœºç‰ˆ~~~',0
+;****************************************å®éªŒç”¨çš„å­—ç¬¦ä¸²
 
-;****************************************paintÖĞËùÓÃµ½µÄ×Ö·û´®
-sz_my				db		'Íæ¼ÒµÄÅÆ',0
-sz_your			db		'¶ÔÊÖµÄÅÆ',0
-sz_fish			db		'Óã³Ø--->>',0
-sz_my_point		db		'Íæ¼ÒµÃ·Ö£º%d',0
-sz_your_point	db		'¶ÔÊÖµÃ·Ö£º%d',0
-sz_my_aogo		db		'Íæ¼ÒÉÏÂÖµöÓãÇé¿ö',0
-sz_your_aogo	db		'¶ÔÊÖÉÏÂÖµöÓãÇé¿ö',0
-;****************************************Ê¤¸º×Ö·û´®
-sz_tishi			db		'Çëµã¡°n¡±¿ªÊ¼ĞÂµÄÒ»¾Ö',0
-sz_win			db		'ÄãÓ®ÁË',0
-sz_lose			db		'ÄãÊäÁË',0
-sz_ping			db		'Æ½ÊÖ',0		
+;****************************************paintä¸­æ‰€ç”¨åˆ°çš„å­—ç¬¦ä¸²
+sz_my				db		'ç©å®¶çš„ç‰Œ',0
+sz_your			db		'å¯¹æ‰‹çš„ç‰Œ',0
+sz_fish			db		'é±¼æ± --->>',0
+sz_my_point		db		'ç©å®¶å¾—åˆ†ï¼š%d',0
+sz_your_point	db		'å¯¹æ‰‹å¾—åˆ†ï¼š%d',0
+sz_my_aogo		db		'ç©å®¶ä¸Šè½®é’“é±¼æƒ…å†µ',0
+sz_your_aogo	db		'å¯¹æ‰‹ä¸Šè½®é’“é±¼æƒ…å†µ',0
+;****************************************èƒœè´Ÿå­—ç¬¦ä¸²
+sz_tishi			db		'è¯·ç‚¹â€œnâ€å¼€å§‹æ–°çš„ä¸€å±€',0
+sz_win			db		'ä½ èµ¢äº†',0
+sz_lose			db		'ä½ è¾“äº†',0
+sz_ping			db		'å¹³æ‰‹',0		
 
-;****************************************ÊµÑéÓÃµÄ×Ö·û´®
-sz_shiyang_pc	db	'ÓãµÄÖµ£º%d',0
+;****************************************å®éªŒç”¨çš„å­—ç¬¦ä¸²
+sz_shiyang_pc	db	'é±¼çš„å€¼ï¼š%d',0
 sz_gameover		db	'game over!',0
-sz_shiyan		db	'Ëæ»úÊı£º%d',0
-sz_computer_fish	db	'´úÌæµçÄÔµöÓã',0
+sz_shiyan		db	'éšæœºæ•°ï¼š%d',0
+sz_computer_fish	db	'ä»£æ›¿ç”µè„‘é’“é±¼',0
 ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-; ´úÂë¶Î
+; ä»£ç æ®µ
 ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 		.code
 ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-; ´°¿Ú¹ı³Ì
+; çª—å£è¿‡ç¨‹
 ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 _proc_help	proc	uses	ebx esi edi	hwnd,wMsg,wParam,lParam
 	
@@ -210,7 +210,7 @@ _proc_me	proc	uses	ebx esi edi	hwnd,wMsg,wParam,lParam
 
 _proc_me	endp
 ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-_LoadRes			proc		uses ebx edi esi	;×°ÔØ×ÊÔ´µÄ×Ó³ÌĞò
+_LoadRes			proc		uses ebx edi esi	;è£…è½½èµ„æºçš„å­ç¨‹åº
 		local		@hDc
 		
 		invoke	GetDC,hWinMain
@@ -256,47 +256,47 @@ _LoadRes			proc		uses ebx edi esi	;×°ÔØ×ÊÔ´µÄ×Ó³ÌĞò
 
 _LoadRes			endp
 ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-MAP_Paint		proc		uses ebx edi esi Dc:DWORD	;paintÏûÏ¢Ë¢ĞÂµÄ×Ó³ÌĞò
+MAP_Paint		proc		uses ebx edi esi Dc:DWORD	;paintæ¶ˆæ¯åˆ·æ–°çš„å­ç¨‹åº
 					local		@stRect:RECT
 					
-					;*************Ğ´ÓÎÏ·ĞÅÏ¢ÎÄ×Ö
+					;*************å†™æ¸¸æˆä¿¡æ¯æ–‡å­—
 					;RECT STRUCT
 					;  left    dd      ?
 					;  top     dd      ?
 					;  right   dd      ?
 					;  bottom  dd      ?
 					;RECT ENDS
-					;***¶ÔÊÖ×Ö·û´®
+					;***å¯¹æ‰‹å­—ç¬¦ä¸²
 					invoke	GetClientRect,hWinMain,addr	@stRect
 					mov		@stRect.left,220d
 					invoke	DrawText,Dc,addr	sz_your,-1,addr	@stRect,DT_SINGLELINE
-					;***Íæ¼Ò×Ö·û´®
+					;***ç©å®¶å­—ç¬¦ä¸²
 					mov		@stRect.top,530d
 					invoke	DrawText,Dc,addr	sz_my,-1,addr	@stRect,DT_SINGLELINE
-					;***ÎÒµÃ·ÖÇé¿ö×Ö·û´®
+					;***æˆ‘å¾—åˆ†æƒ…å†µå­—ç¬¦ä¸²
 					mov		@stRect.left,5d
 					mov		@stRect.top,425d
 					mov		al,my_points
 					invoke	wsprintf,addr	sz_printf,addr	sz_my_point,al
 					invoke	DrawText,Dc,addr	sz_printf,-1,addr	@stRect,DT_SINGLELINE
-					;***¶ÔÊÖµÃ·ÖÇé¿öµÄ×Ö·û´®
+					;***å¯¹æ‰‹å¾—åˆ†æƒ…å†µçš„å­—ç¬¦ä¸²
 					mov		@stRect.top,45d
 					mov		al,your_points
 					invoke	wsprintf,addr	sz_printf,addr	sz_your_point,al
 					invoke	DrawText,Dc,addr	sz_printf,-1,addr	@stRect,DT_SINGLELINE
-					;***Óã³Ø
+					;***é±¼æ± 
 					mov		@stRect.top,260d
 					invoke	DrawText,Dc,addr	sz_fish,-1,addr	@stRect,DT_SINGLELINE
-					;***ÎÒÉÏÂÖµöÓãÇé¿ö×Ö·û´®
+					;***æˆ‘ä¸Šè½®é’“é±¼æƒ…å†µå­—ç¬¦ä¸²
 					mov		@stRect.top,530d
 					mov		@stRect.left,500d
 					invoke	DrawText,Dc,addr	sz_my_aogo,-1,addr	@stRect,DT_SINGLELINE					
-					;***¶ÔÊÖÉÏÂÖµöÓãÇé¿ö×Ö·û´®
+					;***å¯¹æ‰‹ä¸Šè½®é’“é±¼æƒ…å†µå­—ç¬¦ä¸²
 					mov		@stRect.top,0
 					invoke	DrawText,Dc,addr	sz_your_aogo,-1,addr	@stRect,DT_SINGLELINE
 					;*************
 					;*************	
-					;*************¶ÔÊÖµÄÅÆ
+					;*************å¯¹æ‰‹çš„ç‰Œ
 					;lea		esi,your_hand
 					;sub		eax,eax
 					;mov		al,BYTE ptr	[esi]
@@ -332,11 +332,11 @@ MAP_Paint		proc		uses ebx edi esi Dc:DWORD	;paintÏûÏ¢Ë¢ĞÂµÄ×Ó³ÌĞò
 					;			invoke	BitBlt,Dc,width_bmp*4,30,width_bmp,height_bmp,hDc_map,eax,0,SRCCOPY
 					;.endif
 					;**************					
-					;*************¶ÔÊÖµÄÅÆ
+					;*************å¯¹æ‰‹çš„ç‰Œ
 					invoke	BitBlt,Dc,width_bmp*2,30,width_bmp,height_bmp,hDc_back,0,0,SRCCOPY
 					invoke	BitBlt,Dc,width_bmp*3,30,width_bmp,height_bmp,hDc_back,0,0,SRCCOPY
 					invoke	BitBlt,Dc,width_bmp*4,30,width_bmp,height_bmp,hDc_back,0,0,SRCCOPY
-					;*************¶ÔÊÖÉÏÂÖÕ³µÄÅÆ
+					;*************å¯¹æ‰‹ä¸Šè½®ç²˜çš„ç‰Œ
 					lea		esi,your_aogo
 					sub		eax,eax
 					mov		al,BYTE ptr [esi]
@@ -387,7 +387,7 @@ MAP_Paint		proc		uses ebx edi esi Dc:DWORD	;paintÏûÏ¢Ë¢ĞÂµÄ×Ó³ÌĞò
 					;*************
 					;*************
 					;*************
-					;*************Óã³ØÖĞµÄÅÆ
+					;*************é±¼æ± ä¸­çš„ç‰Œ
 					lea		esi,fishes
 					sub		eax,eax
 					mov		al,BYTE ptr [esi]
@@ -485,7 +485,7 @@ MAP_Paint		proc		uses ebx edi esi Dc:DWORD	;paintÏûÏ¢Ë¢ĞÂµÄ×Ó³ÌĞò
 					.endif
 					;*************
 					;*************
-					;*************Íæ¼ÒµÄÅÆ
+					;*************ç©å®¶çš„ç‰Œ
 					lea		esi,my_hand
 					sub		eax,eax
 					mov		al,BYTE ptr	[esi]
@@ -523,7 +523,7 @@ MAP_Paint		proc		uses ebx edi esi Dc:DWORD	;paintÏûÏ¢Ë¢ĞÂµÄ×Ó³ÌĞò
 					;**************
 					;*************
 					;*************
-					;*************Íæ¼ÒÉÏÂÖÕ³µÄÅÆ
+					;*************ç©å®¶ä¸Šè½®ç²˜çš„ç‰Œ
 					lea		esi,my_aogo
 					sub		eax,eax
 					mov		al,BYTE ptr [esi]
@@ -581,29 +581,29 @@ MAP_Paint		proc		uses ebx edi esi Dc:DWORD	;paintÏûÏ¢Ë¢ĞÂµÄ×Ó³ÌĞò
 
 MAP_Paint		endp
 ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-give_puke		proc	uses ebx edi esi who_hand:DWORD,who_num:DWORD	;·¢ÅÆµÄ×Ó³ÌĞò
+give_puke		proc	uses ebx edi esi who_hand:DWORD,who_num:DWORD	;å‘ç‰Œçš„å­ç¨‹åº
 
 					invoke	InvalidateRect,hWinMain,NULL,TRUE
 
-					;*******************ÅĞ¶ÏÓÎÏ·ÊÇ·ñ½áÊø
+					;*******************åˆ¤æ–­æ¸¸æˆæ˜¯å¦ç»“æŸ
 							lea	esi,my_hand
 							lea	edi,your_hand
 							lea	ebx,puke
 							mov	edx,lp_puke_head
 
-							mov	al,BYTE ptr [ebx+edx]				;Î´·¢µÄÅÆ£¬È¡³öÒ»ÕÅ
+							mov	al,BYTE ptr [ebx+edx]				;æœªå‘çš„ç‰Œï¼Œå–å‡ºä¸€å¼ 
 
-							mov	ah,BYTE ptr [esi]				;ÊÖÖĞµÄÅÆ1
-							mov	cl,BYTE ptr [esi+1]			;ÊÖÖĞµÄÅÆ2
-							mov	ch,BYTE ptr [esi+2]			;ÊÖÖĞµÄÅÆ3
+							mov	ah,BYTE ptr [esi]				;æ‰‹ä¸­çš„ç‰Œ1
+							mov	cl,BYTE ptr [esi+1]			;æ‰‹ä¸­çš„ç‰Œ2
+							mov	ch,BYTE ptr [esi+2]			;æ‰‹ä¸­çš„ç‰Œ3
 
-							.if	ax	==	0	&&	cx	==	0			;ÊÖÖĞµÄÃ»ÅÆÇÒÃ»ÅÆ¿É·¢µÄÊ±ºò
+							.if	ax	==	0	&&	cx	==	0			;æ‰‹ä¸­çš„æ²¡ç‰Œä¸”æ²¡ç‰Œå¯å‘çš„æ—¶å€™
 									
 									;mov	al,BYTE ptr [edi]	
 									;mov	ah,BYTE ptr [edi+1]
 									;mov	cl,BYTE ptr [edi+2]
 
-									;.if	ax	==	0	&&	cl	==	0	;¶ÔÊÖÊÖÖĞÃ»ÅÆ
+									;.if	ax	==	0	&&	cl	==	0	;å¯¹æ‰‹æ‰‹ä¸­æ²¡ç‰Œ
 
 											;*******************************
 											lea		esi,my_points	
@@ -644,7 +644,7 @@ give_puke		proc	uses ebx edi esi who_hand:DWORD,who_num:DWORD	;·¢ÅÆµÄ×Ó³ÌĞò
 
 							mov	al,BYTE ptr [esi+ebx]
 							mov	BYTE ptr [edi],al
-							;****************	;°Ñ¸Õ·¢µÄÅÆµÄ´óĞ¡·Åµ½my_hand_numµÄÏàÓ¦µÄÎ»ÖÃÉÏÈ¥
+							;****************	;æŠŠåˆšå‘çš„ç‰Œçš„å¤§å°æ”¾åˆ°my_hand_numçš„ç›¸åº”çš„ä½ç½®ä¸Šå»
 							.if		al < 14d
 
 							.elseif	al	> 13d	&&	al	<	27d
@@ -669,16 +669,16 @@ give_puke		proc	uses ebx edi esi who_hand:DWORD,who_num:DWORD	;·¢ÅÆµÄ×Ó³ÌĞò
 
 give_puke		endp
 ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-_jingong			proc	uses ebx edi esi					;ÎÒµöÓãµÄ×Ó³ÌĞò
+_jingong			proc	uses ebx edi esi					;æˆ‘é’“é±¼çš„å­ç¨‹åº
 
-					mov	eax,hitpoint.x						;Êó±ê×ó¼üµ¥»÷Ê±µÄ×ø±ê
+					mov	eax,hitpoint.x						;é¼ æ ‡å·¦é”®å•å‡»æ—¶çš„åæ ‡
 					mov	ebx,hitpoint.y
-					;********************ÕâÀïµÄ¹¦ÄÜ£¬¾ÍÊÇ°ÑÊÖÀïµÄµÚ1ÕÅÅÆ£¬³éÉÏ¡¢·ÅÏÂºÍÏà¹Ø±äÁ¿µÄ´¦Àí
+					;********************è¿™é‡Œçš„åŠŸèƒ½ï¼Œå°±æ˜¯æŠŠæ‰‹é‡Œçš„ç¬¬1å¼ ç‰Œï¼ŒæŠ½ä¸Šã€æ”¾ä¸‹å’Œç›¸å…³å˜é‡çš„å¤„ç†
 					.if		eax	>	my_hand1_x		&&	ebx	>	my_hand1_y	\
 							&&	eax	<	width_bmp*2+71	&&	ebx	<	height_bmp*4+30+96
 
-							;*************************************;ÕâÀïÅĞ¶ÏÊÖÖĞÓĞÃ»ÓĞÅÆ 
-							lea		esi,my_hand						  ;ÒªÊÇÃ»ÓĞ£¨0£©£¬¾Í²»Ö´ĞĞÈÎºÎ²Ù×÷              
+							;*************************************;è¿™é‡Œåˆ¤æ–­æ‰‹ä¸­æœ‰æ²¡æœ‰ç‰Œ 
+							lea		esi,my_hand						  ;è¦æ˜¯æ²¡æœ‰ï¼ˆ0ï¼‰ï¼Œå°±ä¸æ‰§è¡Œä»»ä½•æ“ä½œ              
 							mov		al,BYTE ptr [esi]				                                           
 							.if		al	==	0
 										ret
@@ -686,7 +686,7 @@ _jingong			proc	uses ebx edi esi					;ÎÒµöÓãµÄ×Ó³ÌĞò
 							;**************************************
 							.if		my_hand1_y	==	height_bmp*4+30-16
 																					
-										add		my_hand1_y,16				;ÏÂ½µ		
+										add		my_hand1_y,16				;ä¸‹é™		
 										mov		eax,my_will_fish
 										dec      eax
 										mov		my_will_fish,eax
@@ -695,7 +695,7 @@ _jingong			proc	uses ebx edi esi					;ÎÒµöÓãµÄ×Ó³ÌĞò
 										mov		BYTE ptr [esi],0
 										;******************
 							.elseif	my_hand1_y	==	height_bmp*4+30
-										sub		my_hand1_y,16				;ÉÏÉı
+										sub		my_hand1_y,16				;ä¸Šå‡
 										mov		eax,my_will_fish
 										inc      eax
 										mov		my_will_fish,eax
@@ -708,12 +708,12 @@ _jingong			proc	uses ebx edi esi					;ÎÒµöÓãµÄ×Ó³ÌĞò
 
 							ret
 					.endif
-					;********************ÕâÀïµÄ¹¦ÄÜ£¬¾ÍÊÇ°ÑÊÖÀïµÄµÚ2ÕÅÅÆ£¬³éÉÏ¡¢·ÅÏÂºÍÏà¹Ø±äÁ¿µÄ´¦Àí
+					;********************è¿™é‡Œçš„åŠŸèƒ½ï¼Œå°±æ˜¯æŠŠæ‰‹é‡Œçš„ç¬¬2å¼ ç‰Œï¼ŒæŠ½ä¸Šã€æ”¾ä¸‹å’Œç›¸å…³å˜é‡çš„å¤„ç†
 					.if		eax	>	my_hand2_x		&&	ebx	>	my_hand2_y	\
 							&&	eax	<	width_bmp*3+71	&&	ebx	<	height_bmp*4+30+96	
 
-							;*************************************;ÕâÀïÅĞ¶ÏÊÖÖĞÓĞÃ»ÓĞÅÆ 
-							lea		esi,my_hand						  ;ÒªÊÇÃ»ÓĞ£¨0£©£¬¾Í²»Ö´ĞĞÈÎºÎ²Ù×÷              
+							;*************************************;è¿™é‡Œåˆ¤æ–­æ‰‹ä¸­æœ‰æ²¡æœ‰ç‰Œ 
+							lea		esi,my_hand						  ;è¦æ˜¯æ²¡æœ‰ï¼ˆ0ï¼‰ï¼Œå°±ä¸æ‰§è¡Œä»»ä½•æ“ä½œ              
 							mov		al,BYTE ptr [esi+1]				                                           
 							.if		al	==	0
 										ret
@@ -742,12 +742,12 @@ _jingong			proc	uses ebx edi esi					;ÎÒµöÓãµÄ×Ó³ÌĞò
 
 							ret
 					.endif
-					;********************ÕâÀïµÄ¹¦ÄÜ£¬¾ÍÊÇ°ÑÊÖÀïµÄµÚ3ÕÅÅÆ£¬³éÉÏ¡¢·ÅÏÂºÍÏà¹Ø±äÁ¿µÄ´¦Àí
+					;********************è¿™é‡Œçš„åŠŸèƒ½ï¼Œå°±æ˜¯æŠŠæ‰‹é‡Œçš„ç¬¬3å¼ ç‰Œï¼ŒæŠ½ä¸Šã€æ”¾ä¸‹å’Œç›¸å…³å˜é‡çš„å¤„ç†
 					.if		eax	>	my_hand3_x		&&	ebx	>	my_hand3_y	\
 							&&	eax	<	width_bmp*4+71	&&	ebx	<	height_bmp*4+30+96	
 
-							;*************************************;ÕâÀïÅĞ¶ÏÊÖÖĞÓĞÃ»ÓĞÅÆ 
-							lea		esi,my_hand						  ;ÒªÊÇÃ»ÓĞ£¨0£©£¬¾Í²»Ö´ĞĞÈÎºÎ²Ù×÷              
+							;*************************************;è¿™é‡Œåˆ¤æ–­æ‰‹ä¸­æœ‰æ²¡æœ‰ç‰Œ 
+							lea		esi,my_hand						  ;è¦æ˜¯æ²¡æœ‰ï¼ˆ0ï¼‰ï¼Œå°±ä¸æ‰§è¡Œä»»ä½•æ“ä½œ              
 							mov		al,BYTE ptr [esi+2]				                                           
 							.if		al	==	0
 										ret
@@ -789,12 +789,12 @@ _jingong			proc	uses ebx edi esi					;ÎÒµöÓãµÄ×Ó³ÌĞò
 					.endif
 					;***********
 					pop		eax
-					;********************Èç¹ûÊÇÕâÀï¾Íµ÷ÓÃ¡°Õ³¡±µÄ×Ó³ÌĞò11111111111111111111111111111111111111111111111111
+					;********************å¦‚æœæ˜¯è¿™é‡Œå°±è°ƒç”¨â€œç²˜â€çš„å­ç¨‹åº11111111111111111111111111111111111111111111111111
 					.if		eax	>	width_bmp*1		&&	ebx	>	height_bmp*2+30	\
 							&&	eax	<	width_bmp*2		&&	ebx	<	height_bmp*2+30+96	
 							;*******************
-							mov	eax,my_will_fish	;¿´¿´ÊÖÉÏ³öÈ¥µÄÅÆÓĞ¼¸ÕÅ
-							.if	eax					;²»ÊÇ0ÕÅ£¬¾ÍµöÓã
+							mov	eax,my_will_fish	;çœ‹çœ‹æ‰‹ä¸Šå‡ºå»çš„ç‰Œæœ‰å‡ å¼ 
+							.if	eax					;ä¸æ˜¯0å¼ ï¼Œå°±é’“é±¼
 									;*************
 									sub	edx,edx
 									mov	ecx,3d
@@ -825,10 +825,10 @@ _jingong			proc	uses ebx edi esi					;ÎÒµöÓãµÄ×Ó³ÌĞò
 									.endif
 									;*******
 									add		dl,al
-									.if		dl	==	14d	;ÄÜµö£¬ÏÂÃæÊÇµöÓã¹¦ÄÜ²¿·Ö´úÂë
+									.if		dl	==	14d	;èƒ½é’“ï¼Œä¸‹é¢æ˜¯é’“é±¼åŠŸèƒ½éƒ¨åˆ†ä»£ç 
 												;invoke	MessageBox,hWinMain,addr sz_can,addr sz_can,MB_OK
-												;*********************°ÑÎÒÊÖÀïµÄ³öÈ¥µÄÅÆ£¬·Åµ½my_aogoÖĞ
-																			;cjcĞèÒª½â¾öµÄÎÊÌâÊÇÔÚ´ÎÍ¬Ê±£¬Íê³ÉËã·Ö¹¦ÄÜ
+												;*********************æŠŠæˆ‘æ‰‹é‡Œçš„å‡ºå»çš„ç‰Œï¼Œæ”¾åˆ°my_aogoä¸­
+																			;cjcéœ€è¦è§£å†³çš„é—®é¢˜æ˜¯åœ¨æ¬¡åŒæ—¶ï¼Œå®Œæˆç®—åˆ†åŠŸèƒ½
 												lea		esi,who_will
 												lea		edi,my_hand
 												lea		edx,my_aogo
@@ -838,7 +838,7 @@ _jingong			proc	uses ebx edi esi					;ÎÒµöÓãµÄ×Ó³ÌĞò
 														mov	al,BYTE ptr [esi]
 														.if	al
 																mov	al,BYTE ptr [edi]
-																add	bl,al		;ÎªÁË»ñµÃ±¾´ÎµöÓãµÄ×ÜµÃ·Ö£¬°ÑËùÓĞ²ÎÓëµöÓãµÄÅÆ¶¼¼Óµ½blÖĞ
+																add	bl,al		;ä¸ºäº†è·å¾—æœ¬æ¬¡é’“é±¼çš„æ€»å¾—åˆ†ï¼ŒæŠŠæ‰€æœ‰å‚ä¸é’“é±¼çš„ç‰Œéƒ½åŠ åˆ°blä¸­
 																mov	BYTE ptr [edi],0
 																mov	BYTE ptr [edx],al
 																mov	BYTE ptr [esi],0
@@ -850,7 +850,7 @@ _jingong			proc	uses ebx edi esi					;ÎÒµöÓãµÄ×Ó³ÌĞò
 																inc	edx
 
 														loop	kill_fish1_2
-												;**********************°ÑfishesÖĞµÄ±»µöµÄÓã£¬·Åµ½my_aogoÖĞ
+												;**********************æŠŠfishesä¸­çš„è¢«é’“çš„é±¼ï¼Œæ”¾åˆ°my_aogoä¸­
 												lea	esi,fishes
 												lea	edi,fish_num
 												mov	BYTE ptr [edi],0
@@ -858,7 +858,7 @@ _jingong			proc	uses ebx edi esi					;ÎÒµöÓãµÄ×Ó³ÌĞò
 												mov	BYTE ptr [esi],0
 												add	bl,al
 												mov	BYTE ptr [edx],al
-												;**********************¼ÆËã±¾ÂÖµÃ·Ö£¬²¢¼Óµ½my_pointsÖĞÈ¥
+												;**********************è®¡ç®—æœ¬è½®å¾—åˆ†ï¼Œå¹¶åŠ åˆ°my_pointsä¸­å»
 												sub	bl,14d
 												mov	cl,13d
 												sub	eax,eax
@@ -866,7 +866,7 @@ _jingong			proc	uses ebx edi esi					;ÎÒµöÓãµÄ×Ó³ÌĞò
 												div	cl
 												mov	bl,al
 												;***
-												mov	eax,my_will_fish	;¿´¿´ÊÖÉÏ³öÈ¥µÄÅÆÓĞ¼¸ÕÅ
+												mov	eax,my_will_fish	;çœ‹çœ‹æ‰‹ä¸Šå‡ºå»çš„ç‰Œæœ‰å‡ å¼ 
 												.if		eax	==	1
 															inc	bl
 															inc	bl
@@ -883,7 +883,7 @@ _jingong			proc	uses ebx edi esi					;ÎÒµöÓãµÄ×Ó³ÌĞò
 												mov		bh,my_points
 												add		bh,bl
 												mov		my_points,bh
-												;**********************Èç¹ûÍæ¼ÒÊÖÖĞÃ»ÅÆÁË,¾Í·¢ÅÆ
+												;**********************å¦‚æœç©å®¶æ‰‹ä¸­æ²¡ç‰Œäº†,å°±å‘ç‰Œ
 												lea		esi,my_hand
 
 												mov		al,BYTE ptr [esi]
@@ -895,13 +895,13 @@ _jingong			proc	uses ebx edi esi					;ÎÒµöÓãµÄ×Ó³ÌĞò
 															lea	edi,my_hand_num
 															invoke	give_puke,esi,edi
 												.endif
-												;**********************¸ÃÇå0µÄÇå0
+												;**********************è¯¥æ¸…0çš„æ¸…0
 												mov		my_will_fish,0
 												;lea		esi,who_will
 												;mov		BYTE ptr [esi],0
 												;mov		BYTE ptr [esi+1],0
 												;mov		BYTE ptr [esi+2],0
-												;**********************Ò»Ğ©¸Ã»¹Ô­µÄÊı¾İ»¹Ô­
+												;**********************ä¸€äº›è¯¥è¿˜åŸçš„æ•°æ®è¿˜åŸ
 												mov	who_fish,1
 												mov	my_hand1_y,height_bmp*4+30		
 												mov	my_hand2_y,height_bmp*4+30
@@ -909,13 +909,13 @@ _jingong			proc	uses ebx edi esi					;ÎÒµöÓãµÄ×Ó³ÌĞò
 												;**********************
 												invoke	InvalidateRect,hWinMain,NULL,TRUE
 												ret
-									.else		;²»ÄÜµö£¬·µ»Ø
+									.else		;ä¸èƒ½é’“ï¼Œè¿”å›
 												;invoke	MessageBox,hWinMain,addr sz_nocan,addr sz_nocan,MB_OK
 												ret
 									.endif
 									;*************
 									ret
-							.else							;ÊÇ0ÕÅ£¬·µ»Ø
+							.else							;æ˜¯0å¼ ï¼Œè¿”å›
 									ret
 							.endif
 							;*******************
@@ -925,8 +925,8 @@ _jingong			proc	uses ebx edi esi					;ÎÒµöÓãµÄ×Ó³ÌĞò
 							&&	eax	<	width_bmp*3		&&	ebx	<	height_bmp*2+30+96	
 
 							;*******************
-							mov	eax,my_will_fish	;¿´¿´ÊÖÉÏ³öÈ¥µÄÅÆÓĞ¼¸ÕÅ
-							.if	eax					;²»ÊÇ0ÕÅ£¬¾ÍµöÓã
+							mov	eax,my_will_fish	;çœ‹çœ‹æ‰‹ä¸Šå‡ºå»çš„ç‰Œæœ‰å‡ å¼ 
+							.if	eax					;ä¸æ˜¯0å¼ ï¼Œå°±é’“é±¼
 									;*************
 									sub	edx,edx
 									mov	ecx,3d
@@ -958,10 +958,10 @@ _jingong			proc	uses ebx edi esi					;ÎÒµöÓãµÄ×Ó³ÌĞò
 									.endif
 									;*******
 									add		dl,al
-									.if		dl	==	14d	;ÄÜµö£¬ÏÂÃæÊÇµöÓã¹¦ÄÜ²¿·Ö´úÂë
+									.if		dl	==	14d	;èƒ½é’“ï¼Œä¸‹é¢æ˜¯é’“é±¼åŠŸèƒ½éƒ¨åˆ†ä»£ç 
 												;invoke	MessageBox,hWinMain,addr sz_can,addr sz_can,MB_OK
-												;*********************°ÑÎÒÊÖÀïµÄ³öÈ¥µÄÅÆ£¬·Åµ½my_aogoÖĞ
-																			;cjcĞèÒª½â¾öµÄÎÊÌâÊÇÔÚ´ÎÍ¬Ê±£¬Íê³ÉËã·Ö¹¦ÄÜ
+												;*********************æŠŠæˆ‘æ‰‹é‡Œçš„å‡ºå»çš„ç‰Œï¼Œæ”¾åˆ°my_aogoä¸­
+																			;cjcéœ€è¦è§£å†³çš„é—®é¢˜æ˜¯åœ¨æ¬¡åŒæ—¶ï¼Œå®Œæˆç®—åˆ†åŠŸèƒ½
 												lea		esi,who_will
 												lea		edi,my_hand
 												lea		edx,my_aogo
@@ -971,7 +971,7 @@ _jingong			proc	uses ebx edi esi					;ÎÒµöÓãµÄ×Ó³ÌĞò
 														mov	al,BYTE ptr [esi]
 														.if	al
 																mov	al,BYTE ptr [edi]
-																add	bl,al		;ÎªÁË»ñµÃ±¾´ÎµöÓãµÄ×ÜµÃ·Ö£¬°ÑËùÓĞ²ÎÓëµöÓãµÄÅÆ¶¼¼Óµ½blÖĞ
+																add	bl,al		;ä¸ºäº†è·å¾—æœ¬æ¬¡é’“é±¼çš„æ€»å¾—åˆ†ï¼ŒæŠŠæ‰€æœ‰å‚ä¸é’“é±¼çš„ç‰Œéƒ½åŠ åˆ°blä¸­
 																mov	BYTE ptr [edi],0
 																mov	BYTE ptr [edx],al
 																mov	BYTE ptr [esi],0
@@ -983,7 +983,7 @@ _jingong			proc	uses ebx edi esi					;ÎÒµöÓãµÄ×Ó³ÌĞò
 																inc	edx
 
 														loop	kill_fish2_2
-												;**********************°ÑfishesÖĞµÄ±»µöµÄÓã£¬·Åµ½my_aogoÖĞ
+												;**********************æŠŠfishesä¸­çš„è¢«é’“çš„é±¼ï¼Œæ”¾åˆ°my_aogoä¸­
 												lea	esi,fishes
 												lea	edi,fish_num
 												inc	edi
@@ -993,7 +993,7 @@ _jingong			proc	uses ebx edi esi					;ÎÒµöÓãµÄ×Ó³ÌĞò
 												mov	BYTE ptr [esi],0
 												add	bl,al
 												mov	BYTE ptr [edx],al
-												;**********************¼ÆËã±¾ÂÖµÃ·Ö£¬²¢¼Óµ½my_pointsÖĞÈ¥
+												;**********************è®¡ç®—æœ¬è½®å¾—åˆ†ï¼Œå¹¶åŠ åˆ°my_pointsä¸­å»
 												sub	bl,14d
 												mov	cl,13d
 												sub	eax,eax
@@ -1001,7 +1001,7 @@ _jingong			proc	uses ebx edi esi					;ÎÒµöÓãµÄ×Ó³ÌĞò
 												div	cl
 												mov	bl,al
 												;***
-												mov	eax,my_will_fish	;¿´¿´ÊÖÉÏ³öÈ¥µÄÅÆÓĞ¼¸ÕÅ
+												mov	eax,my_will_fish	;çœ‹çœ‹æ‰‹ä¸Šå‡ºå»çš„ç‰Œæœ‰å‡ å¼ 
 												.if		eax	==	1
 															inc	bl
 															inc	bl
@@ -1018,7 +1018,7 @@ _jingong			proc	uses ebx edi esi					;ÎÒµöÓãµÄ×Ó³ÌĞò
 												mov		bh,my_points
 												add		bh,bl
 												mov		my_points,bh
-												;**********************Èç¹ûÍæ¼ÒÊÖÖĞÃ»ÅÆÁË,¾Í·¢ÅÆ
+												;**********************å¦‚æœç©å®¶æ‰‹ä¸­æ²¡ç‰Œäº†,å°±å‘ç‰Œ
 												lea		esi,my_hand
 
 												mov		al,BYTE ptr [esi]
@@ -1030,13 +1030,13 @@ _jingong			proc	uses ebx edi esi					;ÎÒµöÓãµÄ×Ó³ÌĞò
 															lea	edi,my_hand_num
 															invoke	give_puke,esi,edi
 												.endif
-												;**********************¸ÃÇå0µÄÇå0
+												;**********************è¯¥æ¸…0çš„æ¸…0
 												mov		my_will_fish,0
 												;lea		esi,who_will
 												;mov		BYTE ptr [esi],0
 												;mov		BYTE ptr [esi+1],0
 												;mov		BYTE ptr [esi+2],0
-												;**********************Ò»Ğ©¸Ã»¹Ô­µÄÊı¾İ»¹Ô­
+												;**********************ä¸€äº›è¯¥è¿˜åŸçš„æ•°æ®è¿˜åŸ
 												mov	who_fish,1
 												mov	my_hand1_y,height_bmp*4+30		
 												mov	my_hand2_y,height_bmp*4+30
@@ -1044,13 +1044,13 @@ _jingong			proc	uses ebx edi esi					;ÎÒµöÓãµÄ×Ó³ÌĞò
 												;**********************
 												invoke	InvalidateRect,hWinMain,NULL,TRUE
 												ret
-									.else		;²»ÄÜµö£¬·µ»Ø
+									.else		;ä¸èƒ½é’“ï¼Œè¿”å›
 												;invoke	MessageBox,hWinMain,addr sz_nocan,addr sz_nocan,MB_OK
 												ret
 									.endif
 									;*************
 									ret
-							.else							;ÊÇ0ÕÅ£¬·µ»Ø
+							.else							;æ˜¯0å¼ ï¼Œè¿”å›
 									ret
 							.endif
 							;*******************
@@ -1060,8 +1060,8 @@ _jingong			proc	uses ebx edi esi					;ÎÒµöÓãµÄ×Ó³ÌĞò
 							&&	eax	<	width_bmp*4		&&	ebx	<	height_bmp*2+30+96	
 
 							;*******************
-							mov	eax,my_will_fish	;¿´¿´ÊÖÉÏ³öÈ¥µÄÅÆÓĞ¼¸ÕÅ
-							.if	eax					;²»ÊÇ0ÕÅ£¬¾ÍµöÓã
+							mov	eax,my_will_fish	;çœ‹çœ‹æ‰‹ä¸Šå‡ºå»çš„ç‰Œæœ‰å‡ å¼ 
+							.if	eax					;ä¸æ˜¯0å¼ ï¼Œå°±é’“é±¼
 									;*************
 									sub	edx,edx
 									mov	ecx,3d
@@ -1094,10 +1094,10 @@ _jingong			proc	uses ebx edi esi					;ÎÒµöÓãµÄ×Ó³ÌĞò
 									.endif
 									;*******
 									add		dl,al
-									.if		dl	==	14d	;ÄÜµö£¬ÏÂÃæÊÇµöÓã¹¦ÄÜ²¿·Ö´úÂë
+									.if		dl	==	14d	;èƒ½é’“ï¼Œä¸‹é¢æ˜¯é’“é±¼åŠŸèƒ½éƒ¨åˆ†ä»£ç 
 												;invoke	MessageBox,hWinMain,addr sz_can,addr sz_can,MB_OK
-												;*********************°ÑÎÒÊÖÀïµÄ³öÈ¥µÄÅÆ£¬·Åµ½my_aogoÖĞ
-																			;cjcĞèÒª½â¾öµÄÎÊÌâÊÇÔÚ´ÎÍ¬Ê±£¬Íê³ÉËã·Ö¹¦ÄÜ
+												;*********************æŠŠæˆ‘æ‰‹é‡Œçš„å‡ºå»çš„ç‰Œï¼Œæ”¾åˆ°my_aogoä¸­
+																			;cjcéœ€è¦è§£å†³çš„é—®é¢˜æ˜¯åœ¨æ¬¡åŒæ—¶ï¼Œå®Œæˆç®—åˆ†åŠŸèƒ½
 												lea		esi,who_will
 												lea		edi,my_hand
 												lea		edx,my_aogo
@@ -1107,7 +1107,7 @@ _jingong			proc	uses ebx edi esi					;ÎÒµöÓãµÄ×Ó³ÌĞò
 														mov	al,BYTE ptr [esi]
 														.if	al
 																mov	al,BYTE ptr [edi]
-																add	bl,al		;ÎªÁË»ñµÃ±¾´ÎµöÓãµÄ×ÜµÃ·Ö£¬°ÑËùÓĞ²ÎÓëµöÓãµÄÅÆ¶¼¼Óµ½blÖĞ
+																add	bl,al		;ä¸ºäº†è·å¾—æœ¬æ¬¡é’“é±¼çš„æ€»å¾—åˆ†ï¼ŒæŠŠæ‰€æœ‰å‚ä¸é’“é±¼çš„ç‰Œéƒ½åŠ åˆ°blä¸­
 																mov	BYTE ptr [edi],0
 																mov	BYTE ptr [edx],al
 																mov	BYTE ptr [esi],0
@@ -1119,7 +1119,7 @@ _jingong			proc	uses ebx edi esi					;ÎÒµöÓãµÄ×Ó³ÌĞò
 																inc	edx
 
 														loop	kill_fish3_2			;????????????????????????????????????????????????
-												;**********************°ÑfishesÖĞµÄ±»µöµÄÓã£¬·Åµ½my_aogoÖĞ
+												;**********************æŠŠfishesä¸­çš„è¢«é’“çš„é±¼ï¼Œæ”¾åˆ°my_aogoä¸­
 												lea	esi,fishes
 												lea	edi,fish_num
 												inc	edi
@@ -1131,7 +1131,7 @@ _jingong			proc	uses ebx edi esi					;ÎÒµöÓãµÄ×Ó³ÌĞò
 												mov	BYTE ptr [esi],0
 												add	bl,al
 												mov	BYTE ptr [edx],al
-												;**********************¼ÆËã±¾ÂÖµÃ·Ö£¬²¢¼Óµ½my_pointsÖĞÈ¥
+												;**********************è®¡ç®—æœ¬è½®å¾—åˆ†ï¼Œå¹¶åŠ åˆ°my_pointsä¸­å»
 												sub	bl,14d
 												mov	cl,13d
 												sub	eax,eax
@@ -1139,7 +1139,7 @@ _jingong			proc	uses ebx edi esi					;ÎÒµöÓãµÄ×Ó³ÌĞò
 												div	cl
 												mov	bl,al
 												;***
-												mov	eax,my_will_fish	;¿´¿´ÊÖÉÏ³öÈ¥µÄÅÆÓĞ¼¸ÕÅ
+												mov	eax,my_will_fish	;çœ‹çœ‹æ‰‹ä¸Šå‡ºå»çš„ç‰Œæœ‰å‡ å¼ 
 												.if		eax	==	1
 															inc	bl
 															inc	bl
@@ -1156,7 +1156,7 @@ _jingong			proc	uses ebx edi esi					;ÎÒµöÓãµÄ×Ó³ÌĞò
 												mov		bh,my_points
 												add		bh,bl
 												mov		my_points,bh
-												;**********************Èç¹ûÍæ¼ÒÊÖÖĞÃ»ÅÆÁË,¾Í·¢ÅÆ
+												;**********************å¦‚æœç©å®¶æ‰‹ä¸­æ²¡ç‰Œäº†,å°±å‘ç‰Œ
 												lea		esi,my_hand
 
 												mov		al,BYTE ptr [esi]
@@ -1168,13 +1168,13 @@ _jingong			proc	uses ebx edi esi					;ÎÒµöÓãµÄ×Ó³ÌĞò
 															lea	edi,my_hand_num
 															invoke	give_puke,esi,edi
 												.endif
-												;**********************¸ÃÇå0µÄÇå0
+												;**********************è¯¥æ¸…0çš„æ¸…0
 												mov		my_will_fish,0
 												;lea		esi,who_will
 												;mov		BYTE ptr [esi],0
 												;mov		BYTE ptr [esi+1],0
 												;mov		BYTE ptr [esi+2],0
-												;**********************Ò»Ğ©¸Ã»¹Ô­µÄÊı¾İ»¹Ô­
+												;**********************ä¸€äº›è¯¥è¿˜åŸçš„æ•°æ®è¿˜åŸ
 												mov	who_fish,1
 												mov	my_hand1_y,height_bmp*4+30		
 												mov	my_hand2_y,height_bmp*4+30
@@ -1182,13 +1182,13 @@ _jingong			proc	uses ebx edi esi					;ÎÒµöÓãµÄ×Ó³ÌĞò
 												;**********************
 												invoke	InvalidateRect,hWinMain,NULL,TRUE
 												ret
-									.else		;²»ÄÜµö£¬·µ»Ø
+									.else		;ä¸èƒ½é’“ï¼Œè¿”å›
 												;invoke	MessageBox,hWinMain,addr sz_nocan,addr sz_nocan,MB_OK
 												ret
 									.endif
 									;*************
 									ret
-							.else							;ÊÇ0ÕÅ£¬·µ»Ø
+							.else							;æ˜¯0å¼ ï¼Œè¿”å›
 									ret
 							.endif
 							;*******************
@@ -1198,8 +1198,8 @@ _jingong			proc	uses ebx edi esi					;ÎÒµöÓãµÄ×Ó³ÌĞò
 							&&	eax	<	width_bmp*5		&&	ebx	<	height_bmp*2+30+96	
 
 							;*******************
-							mov	eax,my_will_fish	;¿´¿´ÊÖÉÏ³öÈ¥µÄÅÆÓĞ¼¸ÕÅ
-							.if	eax					;²»ÊÇ0ÕÅ£¬¾ÍµöÓã
+							mov	eax,my_will_fish	;çœ‹çœ‹æ‰‹ä¸Šå‡ºå»çš„ç‰Œæœ‰å‡ å¼ 
+							.if	eax					;ä¸æ˜¯0å¼ ï¼Œå°±é’“é±¼
 									;*************
 									sub	edx,edx
 									mov	ecx,3d
@@ -1233,10 +1233,10 @@ _jingong			proc	uses ebx edi esi					;ÎÒµöÓãµÄ×Ó³ÌĞò
 									.endif
 									;*******
 									add		dl,al
-									.if		dl	==	14d	;ÄÜµö£¬ÏÂÃæÊÇµöÓã¹¦ÄÜ²¿·Ö´úÂë
+									.if		dl	==	14d	;èƒ½é’“ï¼Œä¸‹é¢æ˜¯é’“é±¼åŠŸèƒ½éƒ¨åˆ†ä»£ç 
 												;invoke	MessageBox,hWinMain,addr sz_can,addr sz_can,MB_OK
-												;*********************°ÑÎÒÊÖÀïµÄ³öÈ¥µÄÅÆ£¬·Åµ½my_aogoÖĞ
-																			;cjcĞèÒª½â¾öµÄÎÊÌâÊÇÔÚ´ÎÍ¬Ê±£¬Íê³ÉËã·Ö¹¦ÄÜ
+												;*********************æŠŠæˆ‘æ‰‹é‡Œçš„å‡ºå»çš„ç‰Œï¼Œæ”¾åˆ°my_aogoä¸­
+																			;cjcéœ€è¦è§£å†³çš„é—®é¢˜æ˜¯åœ¨æ¬¡åŒæ—¶ï¼Œå®Œæˆç®—åˆ†åŠŸèƒ½
 												lea		esi,who_will
 												lea		edi,my_hand
 												lea		edx,my_aogo
@@ -1246,7 +1246,7 @@ _jingong			proc	uses ebx edi esi					;ÎÒµöÓãµÄ×Ó³ÌĞò
 														mov	al,BYTE ptr [esi]
 														.if	al
 																mov	al,BYTE ptr [edi]
-																add	bl,al		;ÎªÁË»ñµÃ±¾´ÎµöÓãµÄ×ÜµÃ·Ö£¬°ÑËùÓĞ²ÎÓëµöÓãµÄÅÆ¶¼¼Óµ½blÖĞ
+																add	bl,al		;ä¸ºäº†è·å¾—æœ¬æ¬¡é’“é±¼çš„æ€»å¾—åˆ†ï¼ŒæŠŠæ‰€æœ‰å‚ä¸é’“é±¼çš„ç‰Œéƒ½åŠ åˆ°blä¸­
 																mov	BYTE ptr [edi],0
 																mov	BYTE ptr [edx],al
 																mov	BYTE ptr [esi],0
@@ -1258,7 +1258,7 @@ _jingong			proc	uses ebx edi esi					;ÎÒµöÓãµÄ×Ó³ÌĞò
 																inc	edx
 
 														loop	kill_fish4_2			;????????????????????????????????????????????????
-												;**********************°ÑfishesÖĞµÄ±»µöµÄÓã£¬·Åµ½my_aogoÖĞ
+												;**********************æŠŠfishesä¸­çš„è¢«é’“çš„é±¼ï¼Œæ”¾åˆ°my_aogoä¸­
 												lea	esi,fishes
 												lea	edi,fish_num
 												inc	edi
@@ -1272,7 +1272,7 @@ _jingong			proc	uses ebx edi esi					;ÎÒµöÓãµÄ×Ó³ÌĞò
 												mov	BYTE ptr [esi],0
 												add	bl,al
 												mov	BYTE ptr [edx],al
-												;**********************¼ÆËã±¾ÂÖµÃ·Ö£¬²¢¼Óµ½my_pointsÖĞÈ¥
+												;**********************è®¡ç®—æœ¬è½®å¾—åˆ†ï¼Œå¹¶åŠ åˆ°my_pointsä¸­å»
 												sub	bl,14d
 												mov	cl,13d
 												sub	eax,eax
@@ -1280,7 +1280,7 @@ _jingong			proc	uses ebx edi esi					;ÎÒµöÓãµÄ×Ó³ÌĞò
 												div	cl
 												mov	bl,al
 												;***
-												mov	eax,my_will_fish	;¿´¿´ÊÖÉÏ³öÈ¥µÄÅÆÓĞ¼¸ÕÅ
+												mov	eax,my_will_fish	;çœ‹çœ‹æ‰‹ä¸Šå‡ºå»çš„ç‰Œæœ‰å‡ å¼ 
 												.if		eax	==	1
 															inc	bl
 															inc	bl
@@ -1297,7 +1297,7 @@ _jingong			proc	uses ebx edi esi					;ÎÒµöÓãµÄ×Ó³ÌĞò
 												mov		bh,my_points
 												add		bh,bl
 												mov		my_points,bh
-												;**********************Èç¹ûÍæ¼ÒÊÖÖĞÃ»ÅÆÁË,¾Í·¢ÅÆ
+												;**********************å¦‚æœç©å®¶æ‰‹ä¸­æ²¡ç‰Œäº†,å°±å‘ç‰Œ
 												lea		esi,my_hand
 
 												mov		al,BYTE ptr [esi]
@@ -1309,13 +1309,13 @@ _jingong			proc	uses ebx edi esi					;ÎÒµöÓãµÄ×Ó³ÌĞò
 															lea	edi,my_hand_num
 															invoke	give_puke,esi,edi
 												.endif
-												;**********************¸ÃÇå0µÄÇå0
+												;**********************è¯¥æ¸…0çš„æ¸…0
 												mov		my_will_fish,0
 												;lea		esi,who_will
 												;mov		BYTE ptr [esi],0
 												;mov		BYTE ptr [esi+1],0
 												;mov		BYTE ptr [esi+2],0
-												;**********************Ò»Ğ©¸Ã»¹Ô­µÄÊı¾İ»¹Ô­
+												;**********************ä¸€äº›è¯¥è¿˜åŸçš„æ•°æ®è¿˜åŸ
 												mov	who_fish,1
 												mov	my_hand1_y,height_bmp*4+30		
 												mov	my_hand2_y,height_bmp*4+30
@@ -1323,13 +1323,13 @@ _jingong			proc	uses ebx edi esi					;ÎÒµöÓãµÄ×Ó³ÌĞò
 												;**********************
 												invoke	InvalidateRect,hWinMain,NULL,TRUE
 												ret
-									.else		;²»ÄÜµö£¬·µ»Ø
+									.else		;ä¸èƒ½é’“ï¼Œè¿”å›
 												;invoke	MessageBox,hWinMain,addr sz_nocan,addr sz_nocan,MB_OK
 												ret
 									.endif
 									;*************
 									ret
-							.else							;ÊÇ0ÕÅ£¬·µ»Ø
+							.else							;æ˜¯0å¼ ï¼Œè¿”å›
 									ret
 							.endif
 							;*******************
@@ -1339,8 +1339,8 @@ _jingong			proc	uses ebx edi esi					;ÎÒµöÓãµÄ×Ó³ÌĞò
 							&&	eax	<	width_bmp*6		&&	ebx	<	height_bmp*2+30+96	
 
 							;*******************
-							mov	eax,my_will_fish	;¿´¿´ÊÖÉÏ³öÈ¥µÄÅÆÓĞ¼¸ÕÅ
-							.if	eax					;²»ÊÇ0ÕÅ£¬¾ÍµöÓã
+							mov	eax,my_will_fish	;çœ‹çœ‹æ‰‹ä¸Šå‡ºå»çš„ç‰Œæœ‰å‡ å¼ 
+							.if	eax					;ä¸æ˜¯0å¼ ï¼Œå°±é’“é±¼
 									;*************
 									sub	edx,edx
 									mov	ecx,3d
@@ -1375,10 +1375,10 @@ _jingong			proc	uses ebx edi esi					;ÎÒµöÓãµÄ×Ó³ÌĞò
 									.endif
 									;*******
 									add		dl,al
-									.if		dl	==	14d	;ÄÜµö£¬ÏÂÃæÊÇµöÓã¹¦ÄÜ²¿·Ö´úÂë
+									.if		dl	==	14d	;èƒ½é’“ï¼Œä¸‹é¢æ˜¯é’“é±¼åŠŸèƒ½éƒ¨åˆ†ä»£ç 
 												;invoke	MessageBox,hWinMain,addr sz_can,addr sz_can,MB_OK
-												;*********************°ÑÎÒÊÖÀïµÄ³öÈ¥µÄÅÆ£¬·Åµ½my_aogoÖĞ
-																			;cjcĞèÒª½â¾öµÄÎÊÌâÊÇÔÚ´ÎÍ¬Ê±£¬Íê³ÉËã·Ö¹¦ÄÜ
+												;*********************æŠŠæˆ‘æ‰‹é‡Œçš„å‡ºå»çš„ç‰Œï¼Œæ”¾åˆ°my_aogoä¸­
+																			;cjcéœ€è¦è§£å†³çš„é—®é¢˜æ˜¯åœ¨æ¬¡åŒæ—¶ï¼Œå®Œæˆç®—åˆ†åŠŸèƒ½
 												lea		esi,who_will
 												lea		edi,my_hand
 												lea		edx,my_aogo
@@ -1388,7 +1388,7 @@ _jingong			proc	uses ebx edi esi					;ÎÒµöÓãµÄ×Ó³ÌĞò
 														mov	al,BYTE ptr [esi]
 														.if	al
 																mov	al,BYTE ptr [edi]
-																add	bl,al		;ÎªÁË»ñµÃ±¾´ÎµöÓãµÄ×ÜµÃ·Ö£¬°ÑËùÓĞ²ÎÓëµöÓãµÄÅÆ¶¼¼Óµ½blÖĞ
+																add	bl,al		;ä¸ºäº†è·å¾—æœ¬æ¬¡é’“é±¼çš„æ€»å¾—åˆ†ï¼ŒæŠŠæ‰€æœ‰å‚ä¸é’“é±¼çš„ç‰Œéƒ½åŠ åˆ°blä¸­
 																mov	BYTE ptr [edi],0
 																mov	BYTE ptr [edx],al
 																mov	BYTE ptr [esi],0
@@ -1400,7 +1400,7 @@ _jingong			proc	uses ebx edi esi					;ÎÒµöÓãµÄ×Ó³ÌĞò
 																inc	edx
 
 														loop	kill_fish5_2			;????????????????????????????????????????????????
-												;**********************°ÑfishesÖĞµÄ±»µöµÄÓã£¬·Åµ½my_aogoÖĞ
+												;**********************æŠŠfishesä¸­çš„è¢«é’“çš„é±¼ï¼Œæ”¾åˆ°my_aogoä¸­
 												lea	esi,fishes
 												lea	edi,fish_num
 												inc	edi
@@ -1416,7 +1416,7 @@ _jingong			proc	uses ebx edi esi					;ÎÒµöÓãµÄ×Ó³ÌĞò
 												mov	BYTE ptr [esi],0
 												add	bl,al
 												mov	BYTE ptr [edx],al
-												;**********************¼ÆËã±¾ÂÖµÃ·Ö£¬²¢¼Óµ½my_pointsÖĞÈ¥
+												;**********************è®¡ç®—æœ¬è½®å¾—åˆ†ï¼Œå¹¶åŠ åˆ°my_pointsä¸­å»
 												sub	bl,14d
 												mov	cl,13d
 												sub	eax,eax
@@ -1424,7 +1424,7 @@ _jingong			proc	uses ebx edi esi					;ÎÒµöÓãµÄ×Ó³ÌĞò
 												div	cl
 												mov	bl,al
 												;***
-												mov	eax,my_will_fish	;¿´¿´ÊÖÉÏ³öÈ¥µÄÅÆÓĞ¼¸ÕÅ
+												mov	eax,my_will_fish	;çœ‹çœ‹æ‰‹ä¸Šå‡ºå»çš„ç‰Œæœ‰å‡ å¼ 
 												.if		eax	==	1
 															inc	bl
 															inc	bl
@@ -1441,7 +1441,7 @@ _jingong			proc	uses ebx edi esi					;ÎÒµöÓãµÄ×Ó³ÌĞò
 												mov		bh,my_points
 												add		bh,bl
 												mov		my_points,bh
-												;**********************Èç¹ûÍæ¼ÒÊÖÖĞÃ»ÅÆÁË,¾Í·¢ÅÆ
+												;**********************å¦‚æœç©å®¶æ‰‹ä¸­æ²¡ç‰Œäº†,å°±å‘ç‰Œ
 												lea		esi,my_hand
 
 												mov		al,BYTE ptr [esi]
@@ -1453,13 +1453,13 @@ _jingong			proc	uses ebx edi esi					;ÎÒµöÓãµÄ×Ó³ÌĞò
 															lea	edi,my_hand_num
 															invoke	give_puke,esi,edi
 												.endif
-												;**********************¸ÃÇå0µÄÇå0
+												;**********************è¯¥æ¸…0çš„æ¸…0
 												mov		my_will_fish,0
 												;lea		esi,who_will
 												;mov		BYTE ptr [esi],0
 												;mov		BYTE ptr [esi+1],0
 												;mov		BYTE ptr [esi+2],0
-												;**********************Ò»Ğ©¸Ã»¹Ô­µÄÊı¾İ»¹Ô­
+												;**********************ä¸€äº›è¯¥è¿˜åŸçš„æ•°æ®è¿˜åŸ
 												mov	who_fish,1
 												mov	my_hand1_y,height_bmp*4+30		
 												mov	my_hand2_y,height_bmp*4+30
@@ -1467,13 +1467,13 @@ _jingong			proc	uses ebx edi esi					;ÎÒµöÓãµÄ×Ó³ÌĞò
 												;**********************
 												invoke	InvalidateRect,hWinMain,NULL,TRUE
 												ret
-									.else		;²»ÄÜµö£¬·µ»Ø
+									.else		;ä¸èƒ½é’“ï¼Œè¿”å›
 												;invoke	MessageBox,hWinMain,addr sz_nocan,addr sz_nocan,MB_OK
 												ret
 									.endif
 									;*************
 									ret
-							.else							;ÊÇ0ÕÅ£¬·µ»Ø
+							.else							;æ˜¯0å¼ ï¼Œè¿”å›
 									ret
 							.endif
 							;*******************
@@ -1483,8 +1483,8 @@ _jingong			proc	uses ebx edi esi					;ÎÒµöÓãµÄ×Ó³ÌĞò
 							&&	eax	<	width_bmp*7		&&	ebx	<	height_bmp*2+30+96	
 
 							;*******************
-							mov	eax,my_will_fish	;¿´¿´ÊÖÉÏ³öÈ¥µÄÅÆÓĞ¼¸ÕÅ
-							.if	eax					;²»ÊÇ0ÕÅ£¬¾ÍµöÓã
+							mov	eax,my_will_fish	;çœ‹çœ‹æ‰‹ä¸Šå‡ºå»çš„ç‰Œæœ‰å‡ å¼ 
+							.if	eax					;ä¸æ˜¯0å¼ ï¼Œå°±é’“é±¼
 									;*************
 									sub	edx,edx
 									mov	ecx,3d
@@ -1520,10 +1520,10 @@ _jingong			proc	uses ebx edi esi					;ÎÒµöÓãµÄ×Ó³ÌĞò
 									.endif
 									;*******
 									add		dl,al
-									.if		dl	==	14d	;ÄÜµö£¬ÏÂÃæÊÇµöÓã¹¦ÄÜ²¿·Ö´úÂë
+									.if		dl	==	14d	;èƒ½é’“ï¼Œä¸‹é¢æ˜¯é’“é±¼åŠŸèƒ½éƒ¨åˆ†ä»£ç 
 												;invoke	MessageBox,hWinMain,addr sz_can,addr sz_can,MB_OK
-												;*********************°ÑÎÒÊÖÀïµÄ³öÈ¥µÄÅÆ£¬·Åµ½my_aogoÖĞ
-																			;cjcĞèÒª½â¾öµÄÎÊÌâÊÇÔÚ´ÎÍ¬Ê±£¬Íê³ÉËã·Ö¹¦ÄÜ
+												;*********************æŠŠæˆ‘æ‰‹é‡Œçš„å‡ºå»çš„ç‰Œï¼Œæ”¾åˆ°my_aogoä¸­
+																			;cjcéœ€è¦è§£å†³çš„é—®é¢˜æ˜¯åœ¨æ¬¡åŒæ—¶ï¼Œå®Œæˆç®—åˆ†åŠŸèƒ½
 												lea		esi,who_will
 												lea		edi,my_hand
 												lea		edx,my_aogo
@@ -1533,7 +1533,7 @@ _jingong			proc	uses ebx edi esi					;ÎÒµöÓãµÄ×Ó³ÌĞò
 														mov	al,BYTE ptr [esi]
 														.if	al
 																mov	al,BYTE ptr [edi]
-																add	bl,al		;ÎªÁË»ñµÃ±¾´ÎµöÓãµÄ×ÜµÃ·Ö£¬°ÑËùÓĞ²ÎÓëµöÓãµÄÅÆ¶¼¼Óµ½blÖĞ
+																add	bl,al		;ä¸ºäº†è·å¾—æœ¬æ¬¡é’“é±¼çš„æ€»å¾—åˆ†ï¼ŒæŠŠæ‰€æœ‰å‚ä¸é’“é±¼çš„ç‰Œéƒ½åŠ åˆ°blä¸­
 																mov	BYTE ptr [edi],0
 																mov	BYTE ptr [edx],al
 																mov	BYTE ptr [esi],0
@@ -1545,7 +1545,7 @@ _jingong			proc	uses ebx edi esi					;ÎÒµöÓãµÄ×Ó³ÌĞò
 																inc	edx
 
 														loop	kill_fish6_2			;????????????????????????????????????????????????
-												;**********************°ÑfishesÖĞµÄ±»µöµÄÓã£¬·Åµ½my_aogoÖĞ
+												;**********************æŠŠfishesä¸­çš„è¢«é’“çš„é±¼ï¼Œæ”¾åˆ°my_aogoä¸­
 												lea	esi,fishes
 												lea	edi,fish_num
 												inc	edi
@@ -1563,7 +1563,7 @@ _jingong			proc	uses ebx edi esi					;ÎÒµöÓãµÄ×Ó³ÌĞò
 												mov	BYTE ptr [esi],0
 												add	bl,al
 												mov	BYTE ptr [edx],al
-												;**********************¼ÆËã±¾ÂÖµÃ·Ö£¬²¢¼Óµ½my_pointsÖĞÈ¥
+												;**********************è®¡ç®—æœ¬è½®å¾—åˆ†ï¼Œå¹¶åŠ åˆ°my_pointsä¸­å»
 												sub	bl,14d
 												mov	cl,13d
 												sub	eax,eax
@@ -1571,7 +1571,7 @@ _jingong			proc	uses ebx edi esi					;ÎÒµöÓãµÄ×Ó³ÌĞò
 												div	cl
 												mov	bl,al
 												;***
-												mov	eax,my_will_fish	;¿´¿´ÊÖÉÏ³öÈ¥µÄÅÆÓĞ¼¸ÕÅ
+												mov	eax,my_will_fish	;çœ‹çœ‹æ‰‹ä¸Šå‡ºå»çš„ç‰Œæœ‰å‡ å¼ 
 												.if		eax	==	1
 															inc	bl
 															inc	bl
@@ -1588,7 +1588,7 @@ _jingong			proc	uses ebx edi esi					;ÎÒµöÓãµÄ×Ó³ÌĞò
 												mov		bh,my_points
 												add		bh,bl
 												mov		my_points,bh
-												;**********************Èç¹ûÍæ¼ÒÊÖÖĞÃ»ÅÆÁË,¾Í·¢ÅÆ
+												;**********************å¦‚æœç©å®¶æ‰‹ä¸­æ²¡ç‰Œäº†,å°±å‘ç‰Œ
 												lea		esi,my_hand
 
 												mov		al,BYTE ptr [esi]
@@ -1600,13 +1600,13 @@ _jingong			proc	uses ebx edi esi					;ÎÒµöÓãµÄ×Ó³ÌĞò
 															lea	edi,my_hand_num
 															invoke	give_puke,esi,edi
 												.endif
-												;**********************¸ÃÇå0µÄÇå0
+												;**********************è¯¥æ¸…0çš„æ¸…0
 												mov		my_will_fish,0
 												;lea		esi,who_will
 												;mov		BYTE ptr [esi],0
 												;mov		BYTE ptr [esi+1],0
 												;mov		BYTE ptr [esi+2],0
-												;**********************Ò»Ğ©¸Ã»¹Ô­µÄÊı¾İ»¹Ô­
+												;**********************ä¸€äº›è¯¥è¿˜åŸçš„æ•°æ®è¿˜åŸ
 												mov	who_fish,1
 												mov	my_hand1_y,height_bmp*4+30		
 												mov	my_hand2_y,height_bmp*4+30
@@ -1614,13 +1614,13 @@ _jingong			proc	uses ebx edi esi					;ÎÒµöÓãµÄ×Ó³ÌĞò
 												;**********************
 												invoke	InvalidateRect,hWinMain,NULL,TRUE
 												ret
-									.else		;²»ÄÜµö£¬·µ»Ø
+									.else		;ä¸èƒ½é’“ï¼Œè¿”å›
 												;invoke	MessageBox,hWinMain,addr sz_nocan,addr sz_nocan,MB_OK
 												ret
 									.endif
 									;*************
 									ret
-							.else							;ÊÇ0ÕÅ£¬·µ»Ø
+							.else							;æ˜¯0å¼ ï¼Œè¿”å›
 									ret
 							.endif
 							;*******************
@@ -1630,8 +1630,8 @@ _jingong			proc	uses ebx edi esi					;ÎÒµöÓãµÄ×Ó³ÌĞò
 							&&	eax	<	width_bmp*8		&&	ebx	<	height_bmp*2+30+96	
 
 							;*******************
-							mov	eax,my_will_fish	;¿´¿´ÊÖÉÏ³öÈ¥µÄÅÆÓĞ¼¸ÕÅ
-							.if	eax					;²»ÊÇ0ÕÅ£¬¾ÍµöÓã
+							mov	eax,my_will_fish	;çœ‹çœ‹æ‰‹ä¸Šå‡ºå»çš„ç‰Œæœ‰å‡ å¼ 
+							.if	eax					;ä¸æ˜¯0å¼ ï¼Œå°±é’“é±¼
 									;*************
 									sub	edx,edx
 									mov	ecx,3d
@@ -1668,10 +1668,10 @@ _jingong			proc	uses ebx edi esi					;ÎÒµöÓãµÄ×Ó³ÌĞò
 									.endif
 									;*******
 									add		dl,al
-									.if		dl	==	14d	;ÄÜµö£¬ÏÂÃæÊÇµöÓã¹¦ÄÜ²¿·Ö´úÂë
+									.if		dl	==	14d	;èƒ½é’“ï¼Œä¸‹é¢æ˜¯é’“é±¼åŠŸèƒ½éƒ¨åˆ†ä»£ç 
 												;invoke	MessageBox,hWinMain,addr sz_can,addr sz_can,MB_OK
-												;*********************°ÑÎÒÊÖÀïµÄ³öÈ¥µÄÅÆ£¬·Åµ½my_aogoÖĞ
-																			;cjcĞèÒª½â¾öµÄÎÊÌâÊÇÔÚ´ÎÍ¬Ê±£¬Íê³ÉËã·Ö¹¦ÄÜ
+												;*********************æŠŠæˆ‘æ‰‹é‡Œçš„å‡ºå»çš„ç‰Œï¼Œæ”¾åˆ°my_aogoä¸­
+																			;cjcéœ€è¦è§£å†³çš„é—®é¢˜æ˜¯åœ¨æ¬¡åŒæ—¶ï¼Œå®Œæˆç®—åˆ†åŠŸèƒ½
 												lea		esi,who_will
 												lea		edi,my_hand
 												lea		edx,my_aogo
@@ -1681,7 +1681,7 @@ _jingong			proc	uses ebx edi esi					;ÎÒµöÓãµÄ×Ó³ÌĞò
 														mov	al,BYTE ptr [esi]
 														.if	al
 																mov	al,BYTE ptr [edi]
-																add	bl,al		;ÎªÁË»ñµÃ±¾´ÎµöÓãµÄ×ÜµÃ·Ö£¬°ÑËùÓĞ²ÎÓëµöÓãµÄÅÆ¶¼¼Óµ½blÖĞ
+																add	bl,al		;ä¸ºäº†è·å¾—æœ¬æ¬¡é’“é±¼çš„æ€»å¾—åˆ†ï¼ŒæŠŠæ‰€æœ‰å‚ä¸é’“é±¼çš„ç‰Œéƒ½åŠ åˆ°blä¸­
 																mov	BYTE ptr [edi],0
 																mov	BYTE ptr [edx],al
 																mov	BYTE ptr [esi],0
@@ -1693,7 +1693,7 @@ _jingong			proc	uses ebx edi esi					;ÎÒµöÓãµÄ×Ó³ÌĞò
 																inc	edx
 
 														loop	kill_fish7_2			;????????????????????????????????????????????????
-												;**********************°ÑfishesÖĞµÄ±»µöµÄÓã£¬·Åµ½my_aogoÖĞ
+												;**********************æŠŠfishesä¸­çš„è¢«é’“çš„é±¼ï¼Œæ”¾åˆ°my_aogoä¸­
 												lea	esi,fishes
 												lea	edi,fish_num
 												inc	edi
@@ -1713,7 +1713,7 @@ _jingong			proc	uses ebx edi esi					;ÎÒµöÓãµÄ×Ó³ÌĞò
 												mov	BYTE ptr [esi],0
 												add	bl,al
 												mov	BYTE ptr [edx],al
-												;**********************¼ÆËã±¾ÂÖµÃ·Ö£¬²¢¼Óµ½my_pointsÖĞÈ¥
+												;**********************è®¡ç®—æœ¬è½®å¾—åˆ†ï¼Œå¹¶åŠ åˆ°my_pointsä¸­å»
 												sub	bl,14d
 												mov	cl,13d
 												sub	eax,eax
@@ -1721,7 +1721,7 @@ _jingong			proc	uses ebx edi esi					;ÎÒµöÓãµÄ×Ó³ÌĞò
 												div	cl
 												mov	bl,al
 												;***
-												mov	eax,my_will_fish	;¿´¿´ÊÖÉÏ³öÈ¥µÄÅÆÓĞ¼¸ÕÅ
+												mov	eax,my_will_fish	;çœ‹çœ‹æ‰‹ä¸Šå‡ºå»çš„ç‰Œæœ‰å‡ å¼ 
 												.if		eax	==	1
 															inc	bl
 															inc	bl
@@ -1738,7 +1738,7 @@ _jingong			proc	uses ebx edi esi					;ÎÒµöÓãµÄ×Ó³ÌĞò
 												mov		bh,my_points
 												add		bh,bl
 												mov		my_points,bh
-												;**********************Èç¹ûÍæ¼ÒÊÖÖĞÃ»ÅÆÁË,¾Í·¢ÅÆ
+												;**********************å¦‚æœç©å®¶æ‰‹ä¸­æ²¡ç‰Œäº†,å°±å‘ç‰Œ
 												lea		esi,my_hand
 
 												mov		al,BYTE ptr [esi]
@@ -1750,13 +1750,13 @@ _jingong			proc	uses ebx edi esi					;ÎÒµöÓãµÄ×Ó³ÌĞò
 															lea	edi,my_hand_num
 															invoke	give_puke,esi,edi
 												.endif
-												;**********************¸ÃÇå0µÄÇå0
+												;**********************è¯¥æ¸…0çš„æ¸…0
 												mov		my_will_fish,0
 												;lea		esi,who_will
 												;mov		BYTE ptr [esi],0
 												;mov		BYTE ptr [esi+1],0
 												;mov		BYTE ptr [esi+2],0
-												;**********************Ò»Ğ©¸Ã»¹Ô­µÄÊı¾İ»¹Ô­
+												;**********************ä¸€äº›è¯¥è¿˜åŸçš„æ•°æ®è¿˜åŸ
 												mov	who_fish,1
 												mov	my_hand1_y,height_bmp*4+30		
 												mov	my_hand2_y,height_bmp*4+30
@@ -1764,13 +1764,13 @@ _jingong			proc	uses ebx edi esi					;ÎÒµöÓãµÄ×Ó³ÌĞò
 												;**********************
 												invoke	InvalidateRect,hWinMain,NULL,TRUE
 												ret
-									.else		;²»ÄÜµö£¬·µ»Ø
+									.else		;ä¸èƒ½é’“ï¼Œè¿”å›
 												;invoke	MessageBox,hWinMain,addr sz_nocan,addr sz_nocan,MB_OK
 												ret
 									.endif
 									;*************
 									ret
-							.else							;ÊÇ0ÕÅ£¬·µ»Ø
+							.else							;æ˜¯0å¼ ï¼Œè¿”å›
 									ret
 							.endif
 							;*******************
@@ -1780,8 +1780,8 @@ _jingong			proc	uses ebx edi esi					;ÎÒµöÓãµÄ×Ó³ÌĞò
 							&&	eax	<	width_bmp*9		&&	ebx	<	height_bmp*2+30+96	
 
 							;*******************
-							mov	eax,my_will_fish	;¿´¿´ÊÖÉÏ³öÈ¥µÄÅÆÓĞ¼¸ÕÅ
-							.if	eax					;²»ÊÇ0ÕÅ£¬¾ÍµöÓã
+							mov	eax,my_will_fish	;çœ‹çœ‹æ‰‹ä¸Šå‡ºå»çš„ç‰Œæœ‰å‡ å¼ 
+							.if	eax					;ä¸æ˜¯0å¼ ï¼Œå°±é’“é±¼
 									;*************
 									sub	edx,edx
 									mov	ecx,3d
@@ -1819,10 +1819,10 @@ _jingong			proc	uses ebx edi esi					;ÎÒµöÓãµÄ×Ó³ÌĞò
 									.endif
 									;*******
 									add		dl,al
-									.if		dl	==	14d	;ÄÜµö£¬ÏÂÃæÊÇµöÓã¹¦ÄÜ²¿·Ö´úÂë
+									.if		dl	==	14d	;èƒ½é’“ï¼Œä¸‹é¢æ˜¯é’“é±¼åŠŸèƒ½éƒ¨åˆ†ä»£ç 
 												;invoke	MessageBox,hWinMain,addr sz_can,addr sz_can,MB_OK
-												;*********************°ÑÎÒÊÖÀïµÄ³öÈ¥µÄÅÆ£¬·Åµ½my_aogoÖĞ
-																			;cjcĞèÒª½â¾öµÄÎÊÌâÊÇÔÚ´ÎÍ¬Ê±£¬Íê³ÉËã·Ö¹¦ÄÜ
+												;*********************æŠŠæˆ‘æ‰‹é‡Œçš„å‡ºå»çš„ç‰Œï¼Œæ”¾åˆ°my_aogoä¸­
+																			;cjcéœ€è¦è§£å†³çš„é—®é¢˜æ˜¯åœ¨æ¬¡åŒæ—¶ï¼Œå®Œæˆç®—åˆ†åŠŸèƒ½
 												lea		esi,who_will
 												lea		edi,my_hand
 												lea		edx,my_aogo
@@ -1832,7 +1832,7 @@ _jingong			proc	uses ebx edi esi					;ÎÒµöÓãµÄ×Ó³ÌĞò
 														mov	al,BYTE ptr [esi]
 														.if	al
 																mov	al,BYTE ptr [edi]
-																add	bl,al		;ÎªÁË»ñµÃ±¾´ÎµöÓãµÄ×ÜµÃ·Ö£¬°ÑËùÓĞ²ÎÓëµöÓãµÄÅÆ¶¼¼Óµ½blÖĞ
+																add	bl,al		;ä¸ºäº†è·å¾—æœ¬æ¬¡é’“é±¼çš„æ€»å¾—åˆ†ï¼ŒæŠŠæ‰€æœ‰å‚ä¸é’“é±¼çš„ç‰Œéƒ½åŠ åˆ°blä¸­
 																mov	BYTE ptr [edi],0
 																mov	BYTE ptr [edx],al
 																mov	BYTE ptr [esi],0
@@ -1844,7 +1844,7 @@ _jingong			proc	uses ebx edi esi					;ÎÒµöÓãµÄ×Ó³ÌĞò
 																inc	edx
 
 														loop	kill_fish8_2			;????????????????????????????????????????????????
-												;**********************°ÑfishesÖĞµÄ±»µöµÄÓã£¬·Åµ½my_aogoÖĞ
+												;**********************æŠŠfishesä¸­çš„è¢«é’“çš„é±¼ï¼Œæ”¾åˆ°my_aogoä¸­
 												lea	esi,fishes
 												lea	edi,fish_num
 												inc	edi
@@ -1866,7 +1866,7 @@ _jingong			proc	uses ebx edi esi					;ÎÒµöÓãµÄ×Ó³ÌĞò
 												mov	BYTE ptr [esi],0
 												add	bl,al
 												mov	BYTE ptr [edx],al
-												;**********************¼ÆËã±¾ÂÖµÃ·Ö£¬²¢¼Óµ½my_pointsÖĞÈ¥
+												;**********************è®¡ç®—æœ¬è½®å¾—åˆ†ï¼Œå¹¶åŠ åˆ°my_pointsä¸­å»
 												sub	bl,14d
 												mov	cl,13d
 												sub	eax,eax
@@ -1874,7 +1874,7 @@ _jingong			proc	uses ebx edi esi					;ÎÒµöÓãµÄ×Ó³ÌĞò
 												div	cl
 												mov	bl,al
 												;***
-												mov	eax,my_will_fish	;¿´¿´ÊÖÉÏ³öÈ¥µÄÅÆÓĞ¼¸ÕÅ
+												mov	eax,my_will_fish	;çœ‹çœ‹æ‰‹ä¸Šå‡ºå»çš„ç‰Œæœ‰å‡ å¼ 
 												.if		eax	==	1
 															inc	bl
 															inc	bl
@@ -1891,7 +1891,7 @@ _jingong			proc	uses ebx edi esi					;ÎÒµöÓãµÄ×Ó³ÌĞò
 												mov		bh,my_points
 												add		bh,bl
 												mov		my_points,bh
-												;**********************Èç¹ûÍæ¼ÒÊÖÖĞÃ»ÅÆÁË,¾Í·¢ÅÆ
+												;**********************å¦‚æœç©å®¶æ‰‹ä¸­æ²¡ç‰Œäº†,å°±å‘ç‰Œ
 												lea		esi,my_hand
 
 												mov		al,BYTE ptr [esi]
@@ -1903,13 +1903,13 @@ _jingong			proc	uses ebx edi esi					;ÎÒµöÓãµÄ×Ó³ÌĞò
 															lea	edi,my_hand_num
 															invoke	give_puke,esi,edi
 												.endif
-												;**********************¸ÃÇå0µÄÇå0
+												;**********************è¯¥æ¸…0çš„æ¸…0
 												mov		my_will_fish,0
 												;lea		esi,who_will
 												;mov		BYTE ptr [esi],0
 												;mov		BYTE ptr [esi+1],0
 												;mov		BYTE ptr [esi+2],0
-												;**********************Ò»Ğ©¸Ã»¹Ô­µÄÊı¾İ»¹Ô­
+												;**********************ä¸€äº›è¯¥è¿˜åŸçš„æ•°æ®è¿˜åŸ
 												mov	who_fish,1
 												mov	my_hand1_y,height_bmp*4+30		
 												mov	my_hand2_y,height_bmp*4+30
@@ -1917,13 +1917,13 @@ _jingong			proc	uses ebx edi esi					;ÎÒµöÓãµÄ×Ó³ÌĞò
 												;**********************
 												invoke	InvalidateRect,hWinMain,NULL,TRUE
 												ret
-									.else		;²»ÄÜµö£¬·µ»Ø
+									.else		;ä¸èƒ½é’“ï¼Œè¿”å›
 												;invoke	MessageBox,hWinMain,addr sz_nocan,addr sz_nocan,MB_OK
 												ret
 									.endif
 									;*************
 									ret
-							.else							;ÊÇ0ÕÅ£¬·µ»Ø
+							.else							;æ˜¯0å¼ ï¼Œè¿”å›
 									ret
 							.endif
 							;*******************
@@ -1932,32 +1932,32 @@ _jingong			proc	uses ebx edi esi					;ÎÒµöÓãµÄ×Ó³ÌĞò
 					ret
 _jingong	endp
 ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-_free_fish		proc	uses ebx edi esi	;Õâ¸öÊÇÎÒµÄ¶ºÅÆµÄ´¦Àí×Ó³ÌĞò
+_free_fish		proc	uses ebx edi esi	;è¿™ä¸ªæ˜¯æˆ‘çš„é€—ç‰Œçš„å¤„ç†å­ç¨‹åº
 					local	go_puke:BYTE 
 
 
 					;*******************
-					mov	eax,my_will_fish	;¿´¿´ÊÖÉÏ³öÈ¥µÄÅÆÊÇ²»ÊÇÖ»ÓĞÒ»ÕÅ£¬ÒòÎªÊÇ²»ÄÜ¶ºÁ½ÕÅÅÆµÄ£¡
-					.if	eax	==	1			;ÊÇÒ»ÕÅ£¬¼ÌĞø
+					mov	eax,my_will_fish	;çœ‹çœ‹æ‰‹ä¸Šå‡ºå»çš„ç‰Œæ˜¯ä¸æ˜¯åªæœ‰ä¸€å¼ ï¼Œå› ä¸ºæ˜¯ä¸èƒ½é€—ä¸¤å¼ ç‰Œçš„ï¼
+					.if	eax	==	1			;æ˜¯ä¸€å¼ ï¼Œç»§ç»­
 
-					.else							;²»ÊÇÒ»ÕÅ£¬²»ÄÜ¶º£¬·µ»Ø
+					.else							;ä¸æ˜¯ä¸€å¼ ï¼Œä¸èƒ½é€—ï¼Œè¿”å›
 							jmp	free_fish1
 					.endif
 					;*******************
-					lea	edi,fishes			;¶ºÅÆµÄ³õÊ¼»¯
+					lea	edi,fishes			;é€—ç‰Œçš„åˆå§‹åŒ–
 					lea	esi,my_hand
 					;mov	,lp_puke_weiba
 					;*******************
-					mov	eax,hitpoint.x		;Êó±êÓÒ¼üµ¥»÷Ê±µÄ×ø±ê
+					mov	eax,hitpoint.x		;é¼ æ ‡å³é”®å•å‡»æ—¶çš„åæ ‡
 					mov	ebx,hitpoint.y
-					;********************´¦Àí´Ë´¦µÄ¡°¶¹ÅÆ¡±111111111111111111111111111111111111111111
+					;********************å¤„ç†æ­¤å¤„çš„â€œè±†ç‰Œâ€111111111111111111111111111111111111111111
 					.if		eax	>	width_bmp*1		&&	ebx	>	height_bmp*2+30	\
 							&&	eax	<	width_bmp*2		&&	ebx	<	height_bmp*2+30+96	
 							
-							mov	al,BYTE ptr [edi]		;¿´¿´ÓÒ»÷µÄµØ·½ÓĞÃ»ÓĞÓã
+							mov	al,BYTE ptr [edi]		;çœ‹çœ‹å³å‡»çš„åœ°æ–¹æœ‰æ²¡æœ‰é±¼
 							mov	go_puke,al
 							;***
-							mov	my_will_fish,0	;ÊÖÉÏ³öÈ¥µÄÅÆ¶º³öÈ¥£¬ËùÒÔmy_will_fish±ä³É0ÕÅ,ÊÖÉÏÏÖÔÚÃ»ÓĞÅÆ³öÈ¥
+							mov	my_will_fish,0	;æ‰‹ä¸Šå‡ºå»çš„ç‰Œé€—å‡ºå»ï¼Œæ‰€ä»¥my_will_fishå˜æˆ0å¼ ,æ‰‹ä¸Šç°åœ¨æ²¡æœ‰ç‰Œå‡ºå»
 							;******************************************
 							lea	eax,who_will
 							mov	cl,BYTE ptr [eax]
@@ -1977,7 +1977,7 @@ _free_fish		proc	uses ebx edi esi	;Õâ¸öÊÇÎÒµÄ¶ºÅÆµÄ´¦Àí×Ó³ÌĞò
 							mov	al,BYTE ptr [esi]
 							mov	BYTE ptr [esi],0
 							mov	BYTE ptr [edi],al
-							;***°ÑÅÆÖµ·Åµ½fish_numµÄÏàÓ¦µÄÎ»ÖÃÉÏÈ¥
+							;***æŠŠç‰Œå€¼æ”¾åˆ°fish_numçš„ç›¸åº”çš„ä½ç½®ä¸Šå»
 							lea	eax,my_hand
 							sub	esi,eax
 							lea	eax,my_hand_num
@@ -1989,7 +1989,7 @@ _free_fish		proc	uses ebx edi esi	;Õâ¸öÊÇÎÒµÄ¶ºÅÆµÄ´¦Àí×Ó³ÌĞò
 							mov	my_hand1_y,height_bmp*4+30		
 							mov	my_hand2_y,height_bmp*4+30
 							mov	my_hand3_y,height_bmp*4+30
-							;******************************************°Ñgo_puke·Åµ½puke×îºóÃæÈ¥
+							;******************************************æŠŠgo_pukeæ”¾åˆ°pukeæœ€åé¢å»
 							mov	al,go_puke
 							.if	al
 									mov	ebx,lp_puke_weiba
@@ -1999,22 +1999,22 @@ _free_fish		proc	uses ebx edi esi	;Õâ¸öÊÇÎÒµÄ¶ºÅÆµÄ´¦Àí×Ó³ÌĞò
 									mov	lp_puke_weiba,ebx
 							.else
 							.endif
-							;******************************************¶ºÅÆÍê³É,·¢ÅÆ		
+							;******************************************é€—ç‰Œå®Œæˆ,å‘ç‰Œ		
 							lea		esi,my_hand
 							lea		edi,my_hand_num
 							invoke	give_puke,esi,edi
 							;******************************************
-							invoke	InvalidateRect,hWinMain,NULL,TRUE	;Ë¢ĞÂµØÍ¼
-							ret														;·µ»Ø
+							invoke	InvalidateRect,hWinMain,NULL,TRUE	;åˆ·æ–°åœ°å›¾
+							ret														;è¿”å›
 
 					.endif
 					;********************2222222222222222222222222222222222222222222222
 					.if		eax	>	width_bmp*2		&&	ebx	>	height_bmp*2+30	\
 							&&	eax	<	width_bmp*3		&&	ebx	<	height_bmp*2+30+96	
 
-							mov	al,BYTE ptr [edi+1]		;¿´¿´ÓÒ»÷µÄµØ·½ÓĞÃ»ÓĞÓã
+							mov	al,BYTE ptr [edi+1]		;çœ‹çœ‹å³å‡»çš„åœ°æ–¹æœ‰æ²¡æœ‰é±¼
 							mov	go_puke,al
-									mov	my_will_fish,0	;ÊÖÉÏ³öÈ¥µÄÅÆ¶º³öÈ¥£¬ËùÒÔmy_will_fish±ä³É0ÕÅ,ÊÖÉÏÏÖÔÚÃ»ÓĞÅÆ³öÈ¥
+									mov	my_will_fish,0	;æ‰‹ä¸Šå‡ºå»çš„ç‰Œé€—å‡ºå»ï¼Œæ‰€ä»¥my_will_fishå˜æˆ0å¼ ,æ‰‹ä¸Šç°åœ¨æ²¡æœ‰ç‰Œå‡ºå»
 									;******************************************
 									lea	eax,who_will
 									mov	cl,BYTE ptr [eax]
@@ -2034,7 +2034,7 @@ _free_fish		proc	uses ebx edi esi	;Õâ¸öÊÇÎÒµÄ¶ºÅÆµÄ´¦Àí×Ó³ÌĞò
 									mov	al,BYTE ptr [esi]
 									mov	BYTE ptr [esi],0
 									mov	BYTE ptr [edi+1],al
-									;***°ÑÅÆÖµ·Åµ½fish_numµÄÏàÓ¦µÄÎ»ÖÃÉÏÈ¥
+									;***æŠŠç‰Œå€¼æ”¾åˆ°fish_numçš„ç›¸åº”çš„ä½ç½®ä¸Šå»
 									lea	eax,my_hand
 									sub	esi,eax
 									lea	eax,my_hand_num
@@ -2046,7 +2046,7 @@ _free_fish		proc	uses ebx edi esi	;Õâ¸öÊÇÎÒµÄ¶ºÅÆµÄ´¦Àí×Ó³ÌĞò
 									mov	my_hand1_y,height_bmp*4+30		
 									mov	my_hand2_y,height_bmp*4+30
 									mov	my_hand3_y,height_bmp*4+30
-									;******************************************°Ñgo_puke·Åµ½puke×îºóÃæÈ¥
+									;******************************************æŠŠgo_pukeæ”¾åˆ°pukeæœ€åé¢å»
 									mov	al,go_puke
 									.if	al
 											mov	ebx,lp_puke_weiba
@@ -2056,27 +2056,27 @@ _free_fish		proc	uses ebx edi esi	;Õâ¸öÊÇÎÒµÄ¶ºÅÆµÄ´¦Àí×Ó³ÌĞò
 											mov	lp_puke_weiba,ebx
 									.else
 									.endif
-									;******************************************¶ºÅÆÍê³É,·¢ÅÆ		
+									;******************************************é€—ç‰Œå®Œæˆ,å‘ç‰Œ		
 									lea		esi,my_hand
 									lea		edi,my_hand_num
 									invoke	give_puke,esi,edi
 									;******************************************
-									invoke	InvalidateRect,hWinMain,NULL,TRUE	;Ë¢ĞÂµØÍ¼
-									ret														;¶ºÅÆÍê³É£¬·µ»Ø
+									invoke	InvalidateRect,hWinMain,NULL,TRUE	;åˆ·æ–°åœ°å›¾
+									ret														;é€—ç‰Œå®Œæˆï¼Œè¿”å›
 
 							;.else
 							;		ret
 							;.endif
 
-							;ret	;Ã»ÓãµÄ»°£¬·µ»Ø
+							;ret	;æ²¡é±¼çš„è¯ï¼Œè¿”å›
 					.endif
 					;********************33333333333333333333333333333333333333333333333
 					.if		eax	>	width_bmp*3		&&	ebx	>	height_bmp*2+30	\
 							&&	eax	<	width_bmp*4		&&	ebx	<	height_bmp*2+30+96	
 
-							mov	al,BYTE ptr [edi+2]		;¿´¿´ÓÒ»÷µÄµØ·½ÓĞÃ»ÓĞÓã
+							mov	al,BYTE ptr [edi+2]		;çœ‹çœ‹å³å‡»çš„åœ°æ–¹æœ‰æ²¡æœ‰é±¼
 							mov	go_puke,al
-									mov	my_will_fish,0	;ÊÖÉÏ³öÈ¥µÄÅÆ¶º³öÈ¥£¬ËùÒÔmy_will_fish±ä³É0ÕÅ,ÊÖÉÏÏÖÔÚÃ»ÓĞÅÆ³öÈ¥
+									mov	my_will_fish,0	;æ‰‹ä¸Šå‡ºå»çš„ç‰Œé€—å‡ºå»ï¼Œæ‰€ä»¥my_will_fishå˜æˆ0å¼ ,æ‰‹ä¸Šç°åœ¨æ²¡æœ‰ç‰Œå‡ºå»
 									;******************************************
 									lea	eax,who_will
 									mov	cl,BYTE ptr [eax]
@@ -2096,7 +2096,7 @@ _free_fish		proc	uses ebx edi esi	;Õâ¸öÊÇÎÒµÄ¶ºÅÆµÄ´¦Àí×Ó³ÌĞò
 									mov	al,BYTE ptr [esi]
 									mov	BYTE ptr [esi],0
 									mov	BYTE ptr [edi+2],al
-									;***°ÑÅÆÖµ·Åµ½fish_numµÄÏàÓ¦µÄÎ»ÖÃÉÏÈ¥
+									;***æŠŠç‰Œå€¼æ”¾åˆ°fish_numçš„ç›¸åº”çš„ä½ç½®ä¸Šå»
 									lea	eax,my_hand
 									sub	esi,eax
 									lea	eax,my_hand_num
@@ -2108,7 +2108,7 @@ _free_fish		proc	uses ebx edi esi	;Õâ¸öÊÇÎÒµÄ¶ºÅÆµÄ´¦Àí×Ó³ÌĞò
 									mov	my_hand1_y,height_bmp*4+30		
 									mov	my_hand2_y,height_bmp*4+30
 									mov	my_hand3_y,height_bmp*4+30
-									;******************************************°Ñgo_puke·Åµ½puke×îºóÃæÈ¥
+									;******************************************æŠŠgo_pukeæ”¾åˆ°pukeæœ€åé¢å»
 									mov	al,go_puke
 									.if	al
 											mov	ebx,lp_puke_weiba
@@ -2118,27 +2118,27 @@ _free_fish		proc	uses ebx edi esi	;Õâ¸öÊÇÎÒµÄ¶ºÅÆµÄ´¦Àí×Ó³ÌĞò
 											mov	lp_puke_weiba,ebx
 									.else
 									.endif
-									;******************************************¶ºÅÆÍê³É,·¢ÅÆ		
+									;******************************************é€—ç‰Œå®Œæˆ,å‘ç‰Œ		
 									lea		esi,my_hand
 									lea		edi,my_hand_num
 									invoke	give_puke,esi,edi
 									;******************************************
-									invoke	InvalidateRect,hWinMain,NULL,TRUE	;Ë¢ĞÂµØÍ¼
-									ret														;¶ºÅÆÍê³É£¬·µ»Ø
+									invoke	InvalidateRect,hWinMain,NULL,TRUE	;åˆ·æ–°åœ°å›¾
+									ret														;é€—ç‰Œå®Œæˆï¼Œè¿”å›
 
 							;.else
 							;		ret
 							;.endif
 
-							;ret	;Ã»ÓãµÄ»°£¬·µ»Ø
+							;ret	;æ²¡é±¼çš„è¯ï¼Œè¿”å›
 					.endif
 					;********************44444444444444444444444444444444444444444444444
 					.if		eax	>	width_bmp*4		&&	ebx	>	height_bmp*2+30	\
 							&&	eax	<	width_bmp*5		&&	ebx	<	height_bmp*2+30+96	
 
-							mov	al,BYTE ptr [edi+3]		;¿´¿´ÓÒ»÷µÄµØ·½ÓĞÃ»ÓĞÓã
+							mov	al,BYTE ptr [edi+3]		;çœ‹çœ‹å³å‡»çš„åœ°æ–¹æœ‰æ²¡æœ‰é±¼
 							mov	go_puke,al
-									mov	my_will_fish,0	;ÊÖÉÏ³öÈ¥µÄÅÆ¶º³öÈ¥£¬ËùÒÔmy_will_fish±ä³É0ÕÅ,ÊÖÉÏÏÖÔÚÃ»ÓĞÅÆ³öÈ¥
+									mov	my_will_fish,0	;æ‰‹ä¸Šå‡ºå»çš„ç‰Œé€—å‡ºå»ï¼Œæ‰€ä»¥my_will_fishå˜æˆ0å¼ ,æ‰‹ä¸Šç°åœ¨æ²¡æœ‰ç‰Œå‡ºå»
 									;******************************************
 									lea	eax,who_will
 									mov	cl,BYTE ptr [eax]
@@ -2158,7 +2158,7 @@ _free_fish		proc	uses ebx edi esi	;Õâ¸öÊÇÎÒµÄ¶ºÅÆµÄ´¦Àí×Ó³ÌĞò
 									mov	al,BYTE ptr [esi]
 									mov	BYTE ptr [esi],0
 									mov	BYTE ptr [edi+3],al
-									;***°ÑÅÆÖµ·Åµ½fish_numµÄÏàÓ¦µÄÎ»ÖÃÉÏÈ¥
+									;***æŠŠç‰Œå€¼æ”¾åˆ°fish_numçš„ç›¸åº”çš„ä½ç½®ä¸Šå»
 									lea	eax,my_hand
 									sub	esi,eax
 									lea	eax,my_hand_num
@@ -2170,7 +2170,7 @@ _free_fish		proc	uses ebx edi esi	;Õâ¸öÊÇÎÒµÄ¶ºÅÆµÄ´¦Àí×Ó³ÌĞò
 									mov	my_hand1_y,height_bmp*4+30		
 									mov	my_hand2_y,height_bmp*4+30
 									mov	my_hand3_y,height_bmp*4+30
-									;******************************************°Ñgo_puke·Åµ½puke×îºóÃæÈ¥
+									;******************************************æŠŠgo_pukeæ”¾åˆ°pukeæœ€åé¢å»
 									mov	al,go_puke
 									.if	al
 											mov	ebx,lp_puke_weiba
@@ -2180,27 +2180,27 @@ _free_fish		proc	uses ebx edi esi	;Õâ¸öÊÇÎÒµÄ¶ºÅÆµÄ´¦Àí×Ó³ÌĞò
 											mov	lp_puke_weiba,ebx
 									.else
 									.endif
-									;******************************************¶ºÅÆÍê³É,·¢ÅÆ		
+									;******************************************é€—ç‰Œå®Œæˆ,å‘ç‰Œ		
 									lea		esi,my_hand
 									lea		edi,my_hand_num
 									invoke	give_puke,esi,edi
 									;******************************************
-									invoke	InvalidateRect,hWinMain,NULL,TRUE	;Ë¢ĞÂµØÍ¼
-									ret														;¶ºÅÆÍê³É£¬·µ»Ø
+									invoke	InvalidateRect,hWinMain,NULL,TRUE	;åˆ·æ–°åœ°å›¾
+									ret														;é€—ç‰Œå®Œæˆï¼Œè¿”å›
 
 							;.else
 							;		ret
 							;.endif
 
-							;ret	;Ã»ÓãµÄ»°£¬·µ»Ø
+							;ret	;æ²¡é±¼çš„è¯ï¼Œè¿”å›
 					.endif
 					;********************555555555555555555555555555555555555555555
 					.if		eax	>	width_bmp*5		&&	ebx	>	height_bmp*2+30	\
 							&&	eax	<	width_bmp*6		&&	ebx	<	height_bmp*2+30+96	
 
-							mov	al,BYTE ptr [edi+4]		;¿´¿´ÓÒ»÷µÄµØ·½ÓĞÃ»ÓĞÓã
+							mov	al,BYTE ptr [edi+4]		;çœ‹çœ‹å³å‡»çš„åœ°æ–¹æœ‰æ²¡æœ‰é±¼
 							mov	go_puke,al
-									mov	my_will_fish,0	;ÊÖÉÏ³öÈ¥µÄÅÆ¶º³öÈ¥£¬ËùÒÔmy_will_fish±ä³É0ÕÅ,ÊÖÉÏÏÖÔÚÃ»ÓĞÅÆ³öÈ¥
+									mov	my_will_fish,0	;æ‰‹ä¸Šå‡ºå»çš„ç‰Œé€—å‡ºå»ï¼Œæ‰€ä»¥my_will_fishå˜æˆ0å¼ ,æ‰‹ä¸Šç°åœ¨æ²¡æœ‰ç‰Œå‡ºå»
 									;******************************************
 									lea	eax,who_will
 									mov	cl,BYTE ptr [eax]
@@ -2220,7 +2220,7 @@ _free_fish		proc	uses ebx edi esi	;Õâ¸öÊÇÎÒµÄ¶ºÅÆµÄ´¦Àí×Ó³ÌĞò
 									mov	al,BYTE ptr [esi]
 									mov	BYTE ptr [esi],0
 									mov	BYTE ptr [edi+4],al
-									;***°ÑÅÆÖµ·Åµ½fish_numµÄÏàÓ¦µÄÎ»ÖÃÉÏÈ¥
+									;***æŠŠç‰Œå€¼æ”¾åˆ°fish_numçš„ç›¸åº”çš„ä½ç½®ä¸Šå»
 									lea	eax,my_hand
 									sub	esi,eax
 									lea	eax,my_hand_num
@@ -2232,7 +2232,7 @@ _free_fish		proc	uses ebx edi esi	;Õâ¸öÊÇÎÒµÄ¶ºÅÆµÄ´¦Àí×Ó³ÌĞò
 									mov	my_hand1_y,height_bmp*4+30		
 									mov	my_hand2_y,height_bmp*4+30
 									mov	my_hand3_y,height_bmp*4+30
-									;******************************************°Ñgo_puke·Åµ½puke×îºóÃæÈ¥
+									;******************************************æŠŠgo_pukeæ”¾åˆ°pukeæœ€åé¢å»
 									mov	al,go_puke
 									.if	al
 											mov	ebx,lp_puke_weiba
@@ -2242,27 +2242,27 @@ _free_fish		proc	uses ebx edi esi	;Õâ¸öÊÇÎÒµÄ¶ºÅÆµÄ´¦Àí×Ó³ÌĞò
 											mov	lp_puke_weiba,ebx
 									.else
 									.endif
-									;******************************************¶ºÅÆÍê³É,·¢ÅÆ		
+									;******************************************é€—ç‰Œå®Œæˆ,å‘ç‰Œ		
 									lea		esi,my_hand
 									lea		edi,my_hand_num
 									invoke	give_puke,esi,edi
 									;******************************************
-									invoke	InvalidateRect,hWinMain,NULL,TRUE	;Ë¢ĞÂµØÍ¼
-									ret														;¶ºÅÆÍê³É£¬·µ»Ø
+									invoke	InvalidateRect,hWinMain,NULL,TRUE	;åˆ·æ–°åœ°å›¾
+									ret														;é€—ç‰Œå®Œæˆï¼Œè¿”å›
 
 							;.else
 							;		ret
 							;.endif
 
-							;ret	;Ã»ÓãµÄ»°£¬·µ»Ø
+							;ret	;æ²¡é±¼çš„è¯ï¼Œè¿”å›
 					.endif
 					;********************66666666666666666666666666666666666666666666
 					.if		eax	>	width_bmp*6		&&	ebx	>	height_bmp*2+30	\
 							&&	eax	<	width_bmp*7		&&	ebx	<	height_bmp*2+30+96	
 
-							mov	al,BYTE ptr [edi+5]		;¿´¿´ÓÒ»÷µÄµØ·½ÓĞÃ»ÓĞÓã
+							mov	al,BYTE ptr [edi+5]		;çœ‹çœ‹å³å‡»çš„åœ°æ–¹æœ‰æ²¡æœ‰é±¼
 							mov	go_puke,al
-									mov	my_will_fish,0	;ÊÖÉÏ³öÈ¥µÄÅÆ¶º³öÈ¥£¬ËùÒÔmy_will_fish±ä³É0ÕÅ,ÊÖÉÏÏÖÔÚÃ»ÓĞÅÆ³öÈ¥
+									mov	my_will_fish,0	;æ‰‹ä¸Šå‡ºå»çš„ç‰Œé€—å‡ºå»ï¼Œæ‰€ä»¥my_will_fishå˜æˆ0å¼ ,æ‰‹ä¸Šç°åœ¨æ²¡æœ‰ç‰Œå‡ºå»
 									;******************************************
 									lea	eax,who_will
 									mov	cl,BYTE ptr [eax]
@@ -2282,7 +2282,7 @@ _free_fish		proc	uses ebx edi esi	;Õâ¸öÊÇÎÒµÄ¶ºÅÆµÄ´¦Àí×Ó³ÌĞò
 									mov	al,BYTE ptr [esi]
 									mov	BYTE ptr [esi],0
 									mov	BYTE ptr [edi+5],al
-									;***°ÑÅÆÖµ·Åµ½fish_numµÄÏàÓ¦µÄÎ»ÖÃÉÏÈ¥
+									;***æŠŠç‰Œå€¼æ”¾åˆ°fish_numçš„ç›¸åº”çš„ä½ç½®ä¸Šå»
 									lea	eax,my_hand
 									sub	esi,eax
 									lea	eax,my_hand_num
@@ -2294,7 +2294,7 @@ _free_fish		proc	uses ebx edi esi	;Õâ¸öÊÇÎÒµÄ¶ºÅÆµÄ´¦Àí×Ó³ÌĞò
 									mov	my_hand1_y,height_bmp*4+30		
 									mov	my_hand2_y,height_bmp*4+30
 									mov	my_hand3_y,height_bmp*4+30
-									;******************************************°Ñgo_puke·Åµ½puke×îºóÃæÈ¥
+									;******************************************æŠŠgo_pukeæ”¾åˆ°pukeæœ€åé¢å»
 									mov	al,go_puke
 									.if	al
 											mov	ebx,lp_puke_weiba
@@ -2304,27 +2304,27 @@ _free_fish		proc	uses ebx edi esi	;Õâ¸öÊÇÎÒµÄ¶ºÅÆµÄ´¦Àí×Ó³ÌĞò
 											mov	lp_puke_weiba,ebx
 									.else
 									.endif
-									;******************************************¶ºÅÆÍê³É,·¢ÅÆ		
+									;******************************************é€—ç‰Œå®Œæˆ,å‘ç‰Œ		
 									lea		esi,my_hand
 									lea		edi,my_hand_num
 									invoke	give_puke,esi,edi
 									;******************************************
-									invoke	InvalidateRect,hWinMain,NULL,TRUE	;Ë¢ĞÂµØÍ¼
-									ret														;¶ºÅÆÍê³É£¬·µ»Ø
+									invoke	InvalidateRect,hWinMain,NULL,TRUE	;åˆ·æ–°åœ°å›¾
+									ret														;é€—ç‰Œå®Œæˆï¼Œè¿”å›
 
 							;.else
 							;		ret
 							;.endif
 
-							;ret	;Ã»ÓãµÄ»°£¬·µ»Ø
+							;ret	;æ²¡é±¼çš„è¯ï¼Œè¿”å›
 					.endif
 					;********************77777777777777777777777777777777777777777777
 					.if		eax	>	width_bmp*7		&&	ebx	>	height_bmp*2+30	\
 							&&	eax	<	width_bmp*8		&&	ebx	<	height_bmp*2+30+96	
 
-							mov	al,BYTE ptr [edi+6]		;¿´¿´ÓÒ»÷µÄµØ·½ÓĞÃ»ÓĞÓã
+							mov	al,BYTE ptr [edi+6]		;çœ‹çœ‹å³å‡»çš„åœ°æ–¹æœ‰æ²¡æœ‰é±¼
 							mov	go_puke,al
-									mov	my_will_fish,0	;ÊÖÉÏ³öÈ¥µÄÅÆ¶º³öÈ¥£¬ËùÒÔmy_will_fish±ä³É0ÕÅ,ÊÖÉÏÏÖÔÚÃ»ÓĞÅÆ³öÈ¥
+									mov	my_will_fish,0	;æ‰‹ä¸Šå‡ºå»çš„ç‰Œé€—å‡ºå»ï¼Œæ‰€ä»¥my_will_fishå˜æˆ0å¼ ,æ‰‹ä¸Šç°åœ¨æ²¡æœ‰ç‰Œå‡ºå»
 									;******************************************
 									lea	eax,who_will
 									mov	cl,BYTE ptr [eax]
@@ -2344,7 +2344,7 @@ _free_fish		proc	uses ebx edi esi	;Õâ¸öÊÇÎÒµÄ¶ºÅÆµÄ´¦Àí×Ó³ÌĞò
 									mov	al,BYTE ptr [esi]
 									mov	BYTE ptr [esi],0
 									mov	BYTE ptr [edi+6],al
-									;***°ÑÅÆÖµ·Åµ½fish_numµÄÏàÓ¦µÄÎ»ÖÃÉÏÈ¥
+									;***æŠŠç‰Œå€¼æ”¾åˆ°fish_numçš„ç›¸åº”çš„ä½ç½®ä¸Šå»
 									lea	eax,my_hand
 									sub	esi,eax
 									lea	eax,my_hand_num
@@ -2356,7 +2356,7 @@ _free_fish		proc	uses ebx edi esi	;Õâ¸öÊÇÎÒµÄ¶ºÅÆµÄ´¦Àí×Ó³ÌĞò
 									mov	my_hand1_y,height_bmp*4+30		
 									mov	my_hand2_y,height_bmp*4+30
 									mov	my_hand3_y,height_bmp*4+30
-									;******************************************°Ñgo_puke·Åµ½puke×îºóÃæÈ¥
+									;******************************************æŠŠgo_pukeæ”¾åˆ°pukeæœ€åé¢å»
 									mov	al,go_puke
 									.if	al
 											mov	ebx,lp_puke_weiba
@@ -2366,27 +2366,27 @@ _free_fish		proc	uses ebx edi esi	;Õâ¸öÊÇÎÒµÄ¶ºÅÆµÄ´¦Àí×Ó³ÌĞò
 											mov	lp_puke_weiba,ebx
 									.else
 									.endif
-									;******************************************¶ºÅÆÍê³É,·¢ÅÆ		
+									;******************************************é€—ç‰Œå®Œæˆ,å‘ç‰Œ		
 									lea		esi,my_hand
 									lea		edi,my_hand_num
 									invoke	give_puke,esi,edi
 									;******************************************
-									invoke	InvalidateRect,hWinMain,NULL,TRUE	;Ë¢ĞÂµØÍ¼
-									ret														;¶ºÅÆÍê³É£¬·µ»Ø
+									invoke	InvalidateRect,hWinMain,NULL,TRUE	;åˆ·æ–°åœ°å›¾
+									ret														;é€—ç‰Œå®Œæˆï¼Œè¿”å›
 
 							;.else
 							;		ret
 							;.endif
 
-							;ret	;Ã»ÓãµÄ»°£¬·µ»Ø
+							;ret	;æ²¡é±¼çš„è¯ï¼Œè¿”å›
 					.endif
 					;********************88888888888888888888888888888888888888888888
 					.if		eax	>	width_bmp*8		&&	ebx	>	height_bmp*2+30	\
 							&&	eax	<	width_bmp*9		&&	ebx	<	height_bmp*2+30+96	
 
-							mov	al,BYTE ptr [edi+7]		;¿´¿´ÓÒ»÷µÄµØ·½ÓĞÃ»ÓĞÓã
+							mov	al,BYTE ptr [edi+7]		;çœ‹çœ‹å³å‡»çš„åœ°æ–¹æœ‰æ²¡æœ‰é±¼
 							mov	go_puke,al
-									mov	my_will_fish,0	;ÊÖÉÏ³öÈ¥µÄÅÆ¶º³öÈ¥£¬ËùÒÔmy_will_fish±ä³É0ÕÅ,ÊÖÉÏÏÖÔÚÃ»ÓĞÅÆ³öÈ¥
+									mov	my_will_fish,0	;æ‰‹ä¸Šå‡ºå»çš„ç‰Œé€—å‡ºå»ï¼Œæ‰€ä»¥my_will_fishå˜æˆ0å¼ ,æ‰‹ä¸Šç°åœ¨æ²¡æœ‰ç‰Œå‡ºå»
 									;******************************************
 									lea	eax,who_will
 									mov	cl,BYTE ptr [eax]
@@ -2406,7 +2406,7 @@ _free_fish		proc	uses ebx edi esi	;Õâ¸öÊÇÎÒµÄ¶ºÅÆµÄ´¦Àí×Ó³ÌĞò
 									mov	al,BYTE ptr [esi]
 									mov	BYTE ptr [esi],0
 									mov	BYTE ptr [edi+7],al
-									;***°ÑÅÆÖµ·Åµ½fish_numµÄÏàÓ¦µÄÎ»ÖÃÉÏÈ¥
+									;***æŠŠç‰Œå€¼æ”¾åˆ°fish_numçš„ç›¸åº”çš„ä½ç½®ä¸Šå»
 									lea	eax,my_hand
 									sub	esi,eax
 									lea	eax,my_hand_num
@@ -2418,7 +2418,7 @@ _free_fish		proc	uses ebx edi esi	;Õâ¸öÊÇÎÒµÄ¶ºÅÆµÄ´¦Àí×Ó³ÌĞò
 									mov	my_hand1_y,height_bmp*4+30		
 									mov	my_hand2_y,height_bmp*4+30
 									mov	my_hand3_y,height_bmp*4+30
-									;******************************************°Ñgo_puke·Åµ½puke×îºóÃæÈ¥
+									;******************************************æŠŠgo_pukeæ”¾åˆ°pukeæœ€åé¢å»
 									mov	al,go_puke
 									.if	al
 											mov	ebx,lp_puke_weiba
@@ -2428,25 +2428,25 @@ _free_fish		proc	uses ebx edi esi	;Õâ¸öÊÇÎÒµÄ¶ºÅÆµÄ´¦Àí×Ó³ÌĞò
 											mov	lp_puke_weiba,ebx
 									.else
 									.endif
-									;******************************************¶ºÅÆÍê³É,·¢ÅÆ		
+									;******************************************é€—ç‰Œå®Œæˆ,å‘ç‰Œ		
 									lea		esi,my_hand
 									lea		edi,my_hand_num
 									invoke	give_puke,esi,edi
 									;******************************************
-									invoke	InvalidateRect,hWinMain,NULL,TRUE	;Ë¢ĞÂµØÍ¼
-									ret														;¶ºÅÆÍê³É£¬·µ»Ø
+									invoke	InvalidateRect,hWinMain,NULL,TRUE	;åˆ·æ–°åœ°å›¾
+									ret														;é€—ç‰Œå®Œæˆï¼Œè¿”å›
 
-							;.else									;Òª¶ºÅÆµÄµØ·½ÓĞÓã
-																	;¸²¸ÇÄÇÒ»³öµÄÅÆ
+							;.else									;è¦é€—ç‰Œçš„åœ°æ–¹æœ‰é±¼
+																	;è¦†ç›–é‚£ä¸€å‡ºçš„ç‰Œ
 									
 								;	ret
 							;.endif
 
-							;ret	;Ã»ÓãµÄ»°£¬·µ»Ø
+							;ret	;æ²¡é±¼çš„è¯ï¼Œè¿”å›
 					.endif
 					;********************
 free_fish1:
-					mov	eax,012345678h						;¶àÓÚÒ»ÕÅÅÆ´ÓÊÖÖĞ³öÀ´£¬¶ºÅÆÊ§°Ü
+					mov	eax,012345678h						;å¤šäºä¸€å¼ ç‰Œä»æ‰‹ä¸­å‡ºæ¥ï¼Œé€—ç‰Œå¤±è´¥
 
 					ret
 
@@ -2458,18 +2458,18 @@ computer_fish	proc	uses eax ebx ecx edx esi edi
 					local		cjc_ebx			;:DWORD 	 				
 					local		cjc_ecx			;:DWORD 
 
-					;***±£´æ	ax,bx,cx
+					;***ä¿å­˜	ax,bx,cx
 					mov		cjc_eax,eax
 					mov		cjc_ebx,ebx
 					mov		cjc_ecx,ecx
-					;***		µöÓã
+					;***		é’“é±¼
 					mov		dl,cl
 					add		dl,ch
-					add		dl,bh				;´ıµöÓãµÄÅÆµÄ´óĞ¡×ÜºÍÔÚdlÖĞ
+					add		dl,bh				;å¾…é’“é±¼çš„ç‰Œçš„å¤§å°æ€»å’Œåœ¨dlä¸­
 					;***
 					mov		dh,al
 					add		dh,ah
-					add		dh,bl				;´ıµöÓãµÄÅÆµÄÅÆÂë×ÜºÍÔÚdhÖĞ
+					add		dh,bl				;å¾…é’“é±¼çš„ç‰Œçš„ç‰Œç æ€»å’Œåœ¨dhä¸­
 					;***
 					mov		ecx,8d
 					lea		esi,fish_num
@@ -2485,10 +2485,10 @@ computer_fish	proc	uses eax ebx ecx edx esi edi
 								.endif
 								add	dl,cl
 								.if	dl	==	14d
-										;**********************°ÑÅÆµÄ·ÖÖµ¼Óµ½dhÖĞ
+										;**********************æŠŠç‰Œçš„åˆ†å€¼åŠ åˆ°dhä¸­
 										mov	cl,BYTE ptr [edi]
 										add	dh,cl
-										;***                   ¼ÆËã±¾ÂÖµÃ·Ö£¬²¢¼Óµ½your_max_pointÖĞÈ¥
+										;***                   è®¡ç®—æœ¬è½®å¾—åˆ†ï¼Œå¹¶åŠ åˆ°your_max_pointä¸­å»
 										sub	dh,14d
 										mov	cl,13d
 										sub	eax,eax
@@ -2497,10 +2497,10 @@ computer_fish	proc	uses eax ebx ecx edx esi edi
 										mov	dh,al
 										mov	al,add_points
 										add	dh,al
-										;**********************ËãºÃµÄ·ÖÔÚdhÖĞ
+										;**********************ç®—å¥½çš„åˆ†åœ¨dhä¸­
 										mov		al,your_max_point
-										;ÔòÌæ»»×î¸ß·Ö
-										;ÔòÌæ»»your_aogo
+										;åˆ™æ›¿æ¢æœ€é«˜åˆ†
+										;åˆ™æ›¿æ¢your_aogo
 										.if		dh		>	al
 													mov	your_max_point,dh
 													;***
@@ -2553,8 +2553,8 @@ _ProcWinMain	proc	uses ebx edi esi,hWnd,uMsg,wParam,lParam
                shr		eax,16 
                mov		hitpoint.y,eax
 
-					invoke	_jingong				;´Ë´¦´¦ÀíÒªÇóÇø±ğ¶ºÅÆºÍÕ³ÅÆ
-														;¶ºÅÆºóÂíÉÏÆô¶¯µçÄÔÕ³ÅÆ×Ó³ÌĞò
+					invoke	_jingong				;æ­¤å¤„å¤„ç†è¦æ±‚åŒºåˆ«é€—ç‰Œå’Œç²˜ç‰Œ
+														;é€—ç‰Œåé©¬ä¸Šå¯åŠ¨ç”µè„‘ç²˜ç‰Œå­ç¨‹åº
 ;********************************************************************
 		.elseif	eax ==	WM_RBUTTONDOWN
                mov		eax,lParam 
@@ -2572,23 +2572,23 @@ _ProcWinMain	proc	uses ebx edi esi,hWnd,uMsg,wParam,lParam
 					;***********
 					invoke	_free_fish
 					;***********
-					.if		eax	==	012345678h	;¶ºÅÆÊ§°Ü£¬²»Æô¶¯¡°µçÄÔµöÓãµÄ³ÌĞò¡±
+					.if		eax	==	012345678h	;é€—ç‰Œå¤±è´¥ï¼Œä¸å¯åŠ¨â€œç”µè„‘é’“é±¼çš„ç¨‹åºâ€
 
 								ret
 					.endif
-					mov		who_fish,2		;ÆäÊµÓÃ2Ã»ÓĞÊ²Ã´ÓÃ´¦£¬µ«ÊÇ´ËÊ±¿¼ÂÇµ½¿ÉÄÜÓÃµ½¶àÏß³Ì£¬ËùÒÔÓÃÁË2
-													;Èç¹û²»Ê¹ÓÃ¶àÏß³ÌµÄ»°£¬¾Í²»ÓÃ2£¬¸Ä»ØÈ¥cjc
-					;***********cjcÎÒÏëÓ¦¸ÃÊÇÔÚ´Ë´¦´¥·¢µçÄÔµöÓãµÄ×Ó³ÌĞò¹¦ÄÜ£¬×¢Òâ£ºÒªÊÇµçÄÔ´¦ÀíµÄ³ÌĞò±È½ÏÂş³¤µÄ»°£¨Î¥·´1/8Ãë¹æÔò£©
-									;¾ÍÓÃ¶àÏß³ÌµÄ·½·¨
+					mov		who_fish,2		;å…¶å®ç”¨2æ²¡æœ‰ä»€ä¹ˆç”¨å¤„ï¼Œä½†æ˜¯æ­¤æ—¶è€ƒè™‘åˆ°å¯èƒ½ç”¨åˆ°å¤šçº¿ç¨‹ï¼Œæ‰€ä»¥ç”¨äº†2
+													;å¦‚æœä¸ä½¿ç”¨å¤šçº¿ç¨‹çš„è¯ï¼Œå°±ä¸ç”¨2ï¼Œæ”¹å›å»cjc
+					;***********cjcæˆ‘æƒ³åº”è¯¥æ˜¯åœ¨æ­¤å¤„è§¦å‘ç”µè„‘é’“é±¼çš„å­ç¨‹åºåŠŸèƒ½ï¼Œæ³¨æ„ï¼šè¦æ˜¯ç”µè„‘å¤„ç†çš„ç¨‹åºæ¯”è¾ƒæ¼«é•¿çš„è¯ï¼ˆè¿å1/8ç§’è§„åˆ™ï¼‰
+									;å°±ç”¨å¤šçº¿ç¨‹çš„æ–¹æ³•
 					invoke	SetTimer,hWnd,TimerID,500,NULL
 					;
 
-;********************************************************************´¦ÀíµçÄÔµöÓã
+;********************************************************************å¤„ç†ç”µè„‘é’“é±¼
 		.elseif	eax ==	WM_computer_fish
 
 					;***
-					mov		al,0							;×î¸ß·ÖÇå0
-					mov		your_max_point,al			;×î¸ß·ÖÇå0
+					mov		al,0							;æœ€é«˜åˆ†æ¸…0
+					mov		your_max_point,al			;æœ€é«˜åˆ†æ¸…0
 					mov		fish_way_hand1,al
 					mov		eax,0ffffffffh
 					mov		fish_way_fishes,eax
@@ -2604,7 +2604,7 @@ _ProcWinMain	proc	uses ebx edi esi,hWnd,uMsg,wParam,lParam
 								mov		al,BYTE ptr [esi]
 								sub		ah,ah
 								sub		bl,bl
-								;***°ÑµçÄÔÊÖÖĞµÄÅÆµÄ´óĞ¡·Åµ½bh£¬cl£¬ch£¬ÖĞ
+								;***æŠŠç”µè„‘æ‰‹ä¸­çš„ç‰Œçš„å¤§å°æ”¾åˆ°bhï¼Œclï¼Œchï¼Œä¸­
 								mov		cl,BYTE ptr [edi]
 								sub		ch,ch
 								sub		bh,bh
@@ -2620,7 +2620,7 @@ _ProcWinMain	proc	uses ebx edi esi,hWnd,uMsg,wParam,lParam
 								sub		al,al
 								mov		ah,BYTE ptr [esi+1]
 								sub		bl,bl
-								;***°ÑµçÄÔÊÖÖĞµÄÅÆµÄ´óĞ¡·Åµ½bh£¬cl£¬ch£¬ÖĞ
+								;***æŠŠç”µè„‘æ‰‹ä¸­çš„ç‰Œçš„å¤§å°æ”¾åˆ°bhï¼Œclï¼Œchï¼Œä¸­
 								sub		cl,cl
 								mov		ch,BYTE ptr [edi+1]
 								sub		bh,bh
@@ -2636,7 +2636,7 @@ _ProcWinMain	proc	uses ebx edi esi,hWnd,uMsg,wParam,lParam
 								sub		al,al
 								sub		ah,ah
 								mov		bl,BYTE ptr [esi+2]
-								;***°ÑµçÄÔÊÖÖĞµÄÅÆµÄ´óĞ¡·Åµ½bh£¬cl£¬ch£¬ÖĞ
+								;***æŠŠç”µè„‘æ‰‹ä¸­çš„ç‰Œçš„å¤§å°æ”¾åˆ°bhï¼Œclï¼Œchï¼Œä¸­
 								sub		cl,cl
 								sub		ch,ch
 								mov		bh,BYTE ptr [edi+2]
@@ -2652,7 +2652,7 @@ _ProcWinMain	proc	uses ebx edi esi,hWnd,uMsg,wParam,lParam
 								mov		al,BYTE ptr [esi]
 								mov		ah,BYTE ptr [esi+1]
 								sub		bl,bl
-								;***°ÑµçÄÔÊÖÖĞµÄÅÆµÄ´óĞ¡·Åµ½bh£¬cl£¬ch£¬ÖĞ
+								;***æŠŠç”µè„‘æ‰‹ä¸­çš„ç‰Œçš„å¤§å°æ”¾åˆ°bhï¼Œclï¼Œchï¼Œä¸­
 								mov		cl,BYTE ptr [edi]
 								mov		ch,BYTE ptr [edi+1]
 								sub		bh,bh
@@ -2668,7 +2668,7 @@ _ProcWinMain	proc	uses ebx edi esi,hWnd,uMsg,wParam,lParam
 								mov		al,BYTE ptr [esi]
 								sub		ah,ah
 								mov		bl,BYTE ptr [esi+2]
-								;***°ÑµçÄÔÊÖÖĞµÄÅÆµÄ´óĞ¡·Åµ½bh£¬cl£¬ch£¬ÖĞ
+								;***æŠŠç”µè„‘æ‰‹ä¸­çš„ç‰Œçš„å¤§å°æ”¾åˆ°bhï¼Œclï¼Œchï¼Œä¸­
 								mov		cl,BYTE ptr [edi]
 								sub		ch,ch
 								mov		bh,BYTE ptr [edi+2]
@@ -2684,7 +2684,7 @@ _ProcWinMain	proc	uses ebx edi esi,hWnd,uMsg,wParam,lParam
 								sub		al,al
 								mov		ah,BYTE ptr [esi+1]
 								mov		bl,BYTE ptr [esi+2]
-								;***°ÑµçÄÔÊÖÖĞµÄÅÆµÄ´óĞ¡·Åµ½bh£¬cl£¬ch£¬ÖĞ
+								;***æŠŠç”µè„‘æ‰‹ä¸­çš„ç‰Œçš„å¤§å°æ”¾åˆ°bhï¼Œclï¼Œchï¼Œä¸­
 								sub		cl,cl
 								mov		ch,BYTE ptr [edi+1]
 								mov		bh,BYTE ptr [edi+2]
@@ -2700,7 +2700,7 @@ _ProcWinMain	proc	uses ebx edi esi,hWnd,uMsg,wParam,lParam
 								mov		al,BYTE ptr [esi]
 								mov		ah,BYTE ptr [esi+1]
 								mov		bl,BYTE ptr [esi+2]
-								;***°ÑµçÄÔÊÖÖĞµÄÅÆµÄ´óĞ¡·Åµ½bh£¬cl£¬ch£¬ÖĞ
+								;***æŠŠç”µè„‘æ‰‹ä¸­çš„ç‰Œçš„å¤§å°æ”¾åˆ°bhï¼Œclï¼Œchï¼Œä¸­
 								mov		cl,BYTE ptr [edi]
 								mov		ch,BYTE ptr [edi+1]
 								mov		bh,BYTE ptr [edi+2]
@@ -2719,13 +2719,13 @@ _ProcWinMain	proc	uses ebx edi esi,hWnd,uMsg,wParam,lParam
 								dec	ecx
 								jmp	computer1
 					.endif
-					;*********************************************ÕâÀïÔÙ´¦ÀíÅÆµÄ×ªÒÆºÍÇå0
-					;*********************************************ÕâÀïÔÙ´¦ÀíÅÆµÄ×ªÒÆºÍÇå0
-					mov		al,your_max_point			;×î¸ß·ÖÇå0
+					;*********************************************è¿™é‡Œå†å¤„ç†ç‰Œçš„è½¬ç§»å’Œæ¸…0
+					;*********************************************è¿™é‡Œå†å¤„ç†ç‰Œçš„è½¬ç§»å’Œæ¸…0
+					mov		al,your_max_point			;æœ€é«˜åˆ†æ¸…0
 					.if		al	==	0
 								jmp	computer_fish_over
 					.endif
-					;*********************************************ÕâÀïÔÙ´¦ÀíÅÆµÄ×ªÒÆºÍÇå0
+					;*********************************************è¿™é‡Œå†å¤„ç†ç‰Œçš„è½¬ç§»å’Œæ¸…0
 					mov		cl,fish_way_hand1
 					lea		esi,your_hand			
 					lea		edi,your_hand_num
@@ -2737,19 +2737,19 @@ _ProcWinMain	proc	uses ebx edi esi,hWnd,uMsg,wParam,lParam
 
 								mov		al,BYTE ptr [esi]
 								mov		BYTE ptr [esi],dl
-								;***°ÑµçÄÔÊÖÖĞµÄÅÆµÄ´óĞ¡·Åµ½bh£¬cl£¬ch£¬ÖĞ
+								;***æŠŠç”µè„‘æ‰‹ä¸­çš„ç‰Œçš„å¤§å°æ”¾åˆ°bhï¼Œclï¼Œchï¼Œä¸­
 								mov		BYTE ptr [edi],dl
 								;***
 					.elseif	cl		==	6d
 								mov		ah,BYTE ptr [esi+1]
 								mov		BYTE ptr [esi+1],dl
-								;***°ÑµçÄÔÊÖÖĞµÄÅÆµÄ´óĞ¡·Åµ½bh£¬cl£¬ch£¬ÖĞ
+								;***æŠŠç”µè„‘æ‰‹ä¸­çš„ç‰Œçš„å¤§å°æ”¾åˆ°bhï¼Œclï¼Œchï¼Œä¸­
 								mov		BYTE ptr [edi+1],dl
 								;***
 					.elseif	cl		==	5d
 								mov		bl,BYTE ptr [esi+2]
 								mov		BYTE ptr [esi+2],dl
-								;***°ÑµçÄÔÊÖÖĞµÄÅÆµÄ´óĞ¡·Åµ½bh£¬cl£¬ch£¬ÖĞ
+								;***æŠŠç”µè„‘æ‰‹ä¸­çš„ç‰Œçš„å¤§å°æ”¾åˆ°bhï¼Œclï¼Œchï¼Œä¸­
 								mov		BYTE ptr [edi+2],dl
 								;***
 					.elseif	cl		==	4d
@@ -2757,7 +2757,7 @@ _ProcWinMain	proc	uses ebx edi esi,hWnd,uMsg,wParam,lParam
 								mov		ah,BYTE ptr [esi+1]
 								mov		BYTE ptr [esi],dl  
 								mov		BYTE ptr [esi+1],dl
-								;***°ÑµçÄÔÊÖÖĞµÄÅÆµÄ´óĞ¡·Åµ½bh£¬cl£¬ch£¬ÖĞ
+								;***æŠŠç”µè„‘æ‰‹ä¸­çš„ç‰Œçš„å¤§å°æ”¾åˆ°bhï¼Œclï¼Œchï¼Œä¸­
 								mov		BYTE ptr [edi],dl  
 								mov		BYTE ptr [edi+1],dl 
 								;***
@@ -2766,7 +2766,7 @@ _ProcWinMain	proc	uses ebx edi esi,hWnd,uMsg,wParam,lParam
 								mov		bl,BYTE ptr [esi+2]
 								mov		BYTE ptr [esi],dl   
 								mov		BYTE ptr [esi+2],dl 
-								;***°ÑµçÄÔÊÖÖĞµÄÅÆµÄ´óĞ¡·Åµ½bh£¬cl£¬ch£¬ÖĞ
+								;***æŠŠç”µè„‘æ‰‹ä¸­çš„ç‰Œçš„å¤§å°æ”¾åˆ°bhï¼Œclï¼Œchï¼Œä¸­
 								mov		BYTE ptr [edi],dl  
 								mov		BYTE ptr [edi+2],dl
 								;***
@@ -2775,7 +2775,7 @@ _ProcWinMain	proc	uses ebx edi esi,hWnd,uMsg,wParam,lParam
 								mov		bl,BYTE ptr [esi+2]
 								mov		BYTE ptr [esi+1],dl
 								mov		BYTE ptr [esi+2],dl
-								;***°ÑµçÄÔÊÖÖĞµÄÅÆµÄ´óĞ¡·Åµ½bh£¬cl£¬ch£¬ÖĞ
+								;***æŠŠç”µè„‘æ‰‹ä¸­çš„ç‰Œçš„å¤§å°æ”¾åˆ°bhï¼Œclï¼Œchï¼Œä¸­
 								mov		BYTE ptr [edi+1],dl   
 								mov		BYTE ptr [edi+2],dl   
 								;***
@@ -2786,7 +2786,7 @@ _ProcWinMain	proc	uses ebx edi esi,hWnd,uMsg,wParam,lParam
 								mov		BYTE ptr [esi],dl  
 								mov		BYTE ptr [esi+1],dl
 								mov		BYTE ptr [esi+2],dl
-								;***°ÑµçÄÔÊÖÖĞµÄÅÆµÄ´óĞ¡·Åµ½bh£¬cl£¬ch£¬ÖĞ
+								;***æŠŠç”µè„‘æ‰‹ä¸­çš„ç‰Œçš„å¤§å°æ”¾åˆ°bhï¼Œclï¼Œchï¼Œä¸­
 								mov		BYTE ptr [edi],dl  
 								mov		BYTE ptr [edi+1],dl
 								mov		BYTE ptr [edi+2],dl
@@ -2815,18 +2815,18 @@ _ProcWinMain	proc	uses ebx edi esi,hWnd,uMsg,wParam,lParam
 								mov	BYTE ptr [esi+ebx],ah
 								mov	BYTE ptr [edx],al
 					.endif
-					;*********************************************°Ñ±¾ÂÖµöÓãµÄ·Ö¼Óµ½×Ü·ÖÖĞÈ¥
+					;*********************************************æŠŠæœ¬è½®é’“é±¼çš„åˆ†åŠ åˆ°æ€»åˆ†ä¸­å»
 					mov		al,your_points
 					mov		ah,your_max_point
 					add		al,ah
 					mov		your_points,al
-					;**********************************************************************************************Çå0
+					;**********************************************************************************************æ¸…0
 					computer_fish_over:
-					;**********************************¸ø¶ÔÊÖ£¨µçÄÔ£©·¢ÅÆ        
+					;**********************************ç»™å¯¹æ‰‹ï¼ˆç”µè„‘ï¼‰å‘ç‰Œ        
 					lea		esi,your_hand                                         					
 					lea		edi,your_hand_num                                     
 					invoke	give_puke,esi,edi
-					;**********************************¶ÔÊÖ£¨µçÄÔ£©¶·ÅÆ
+					;**********************************å¯¹æ‰‹ï¼ˆç”µè„‘ï¼‰æ–—ç‰Œ
 					lea		esi,fishes
 					lea		edi,fish_num
 					add		esi,7d
@@ -2843,8 +2843,8 @@ _ProcWinMain	proc	uses ebx edi esi,hWnd,uMsg,wParam,lParam
 								dec	edi
 					loop		computer_free_fish1
 					computer_free_fish2:		
-					mov		ebx,esi		;esiÖĞÊÇµçÄÔÒª¶·ÅÆµÄµØÖ·
-					mov		edx,edi		;ediÖĞÊÇµçÄÔÒª¶·ÅÆµÄnumµÄµØÖ·
+					mov		ebx,esi		;esiä¸­æ˜¯ç”µè„‘è¦æ–—ç‰Œçš„åœ°å€
+					mov		edx,edi		;ediä¸­æ˜¯ç”µè„‘è¦æ–—ç‰Œçš„numçš„åœ°å€
 					;***
 					lea		esi,your_hand                                         					
 					lea		edi,your_hand_num
@@ -2867,14 +2867,14 @@ _ProcWinMain	proc	uses ebx edi esi,hWnd,uMsg,wParam,lParam
 					loop		computer_free_fish3
 					computer_free_fish4:
 					;***
-					;**********************************ÔÙ¸ø¶ÔÊÖ£¨µçÄÔ£©·¢ÅÆ 
+					;**********************************å†ç»™å¯¹æ‰‹ï¼ˆç”µè„‘ï¼‰å‘ç‰Œ 
 					lea		esi,your_hand                                         					
 					lea		edi,your_hand_num                                     
 					invoke	give_puke,esi,edi
 					;**********************************
 					;**********************************
 					;**********************************
-					;**********************************¸ø¶ÔÊÖ£¨µçÄÔ£©»»ÅÆ
+					;**********************************ç»™å¯¹æ‰‹ï¼ˆç”µè„‘ï¼‰æ¢ç‰Œ
 					mov		eax,lp_puke_head
 					.if		eax	<	51d	;&&		eax	>	7d
 								mov		al,can_huanpai
@@ -2902,7 +2902,7 @@ _ProcWinMain	proc	uses ebx edi esi,hWnd,uMsg,wParam,lParam
 											mov		BYTE ptr [esi+1],ah
 											mov		BYTE ptr [esi+2],cl
 											;******************
-											;****************	;°Ñ¸Õ·¢µÄÅÆµÄ´óĞ¡·Åµ½my_hand_numµÄÏàÓ¦µÄÎ»ÖÃÉÏÈ¥
+											;****************	;æŠŠåˆšå‘çš„ç‰Œçš„å¤§å°æ”¾åˆ°my_hand_numçš„ç›¸åº”çš„ä½ç½®ä¸Šå»
 											.if		al < 14d
 
 											.elseif	al	> 13d	&&	al	<	27d
@@ -2912,7 +2912,7 @@ _ProcWinMain	proc	uses ebx edi esi,hWnd,uMsg,wParam,lParam
 											.elseif	al > 39d && al	<	53d
 														sub	al,39d
 											.endif
-											;****************	;°Ñ¸Õ·¢µÄÅÆµÄ´óĞ¡·Åµ½my_hand_numµÄÏàÓ¦µÄÎ»ÖÃÉÏÈ¥
+											;****************	;æŠŠåˆšå‘çš„ç‰Œçš„å¤§å°æ”¾åˆ°my_hand_numçš„ç›¸åº”çš„ä½ç½®ä¸Šå»
 											.if		ah < 14d
 
 											.elseif	ah	> 13d	&&	ah	<	27d
@@ -2922,7 +2922,7 @@ _ProcWinMain	proc	uses ebx edi esi,hWnd,uMsg,wParam,lParam
 											.elseif	ah > 39d && ah	<	53d
 														sub	ah,39d
 											.endif
-											;****************	;°Ñ¸Õ·¢µÄÅÆµÄ´óĞ¡·Åµ½my_hand_numµÄÏàÓ¦µÄÎ»ÖÃÉÏÈ¥
+											;****************	;æŠŠåˆšå‘çš„ç‰Œçš„å¤§å°æ”¾åˆ°my_hand_numçš„ç›¸åº”çš„ä½ç½®ä¸Šå»
 											.if		cl < 14d
 
 											.elseif	cl	> 13d	&&	cl	<	27d
@@ -2948,11 +2948,11 @@ _ProcWinMain	proc	uses ebx edi esi,hWnd,uMsg,wParam,lParam
 					;**********************************
 					;**********************************
 					;**********************************
-					mov		who_fish,0					;°ÑÂÖ»»Î»Çå0
+					mov		who_fish,0					;æŠŠè½®æ¢ä½æ¸…0
 					invoke	InvalidateRect,hWinMain,NULL,TRUE
 					ret
-;********************************************************************Õâ¸öÏûÏ¢´¦ÀíÒªÊÇÓÃ²»ÉÏµÄ»°£¬ÓÎÏ·È«²¿Íê³ÉºóÉ¾³ıËü
-      .elseif  eax ==   WM_CHAR        ;¶àÓÃÓÚÊµÑé          
+;********************************************************************è¿™ä¸ªæ¶ˆæ¯å¤„ç†è¦æ˜¯ç”¨ä¸ä¸Šçš„è¯ï¼Œæ¸¸æˆå…¨éƒ¨å®Œæˆååˆ é™¤å®ƒ
+      .elseif  eax ==   WM_CHAR        ;å¤šç”¨äºå®éªŒ          
 					mov		eax,wParam
                .if      eax == "n"
 					;*********
@@ -2964,23 +2964,23 @@ _ProcWinMain	proc	uses ebx edi esi,hWnd,uMsg,wParam,lParam
 		.elseif	eax ==	WM_NEWGAME
 					;*********************************
 					invoke	KillTimer,hWnd,TimerID
-					;*********************************¸øÎÒÊÖÖĞµÄÅÆµÄ×ø±ê¸³Öµ£¨ÒòÎªÕâĞ©Öµ¾­³£±ä»¯£¬ËùÒÔÒªÓÃ±äÁ¿À´±íÊ¾ËüÃÇ£©
+					;*********************************ç»™æˆ‘æ‰‹ä¸­çš„ç‰Œçš„åæ ‡èµ‹å€¼ï¼ˆå› ä¸ºè¿™äº›å€¼ç»å¸¸å˜åŒ–ï¼Œæ‰€ä»¥è¦ç”¨å˜é‡æ¥è¡¨ç¤ºå®ƒä»¬ï¼‰
 					mov		my_hand1_x,width_bmp*2
 					mov		my_hand1_y,height_bmp*4+30
 					mov		my_hand2_x,width_bmp*3
 					mov		my_hand2_y,height_bmp*4+30
 					mov		my_hand3_x,width_bmp*4
 					mov		my_hand3_y,height_bmp*4+30
-					;**********************************ĞèÒªÇå0µÄÒ»Ğ©±äÁ¿
+					;**********************************éœ€è¦æ¸…0çš„ä¸€äº›å˜é‡
 					invoke	RtlZeroMemory,addr	my_hand,180d
 					mov		my_will_fish,0
 					mov		who_fish,0
-					;**********************************ÊµÑé×¨ÓÃ
+					;**********************************å®éªŒä¸“ç”¨
 
-					;**********************************Î´·¢µÄÅÆµÄÊ×Î»Ö¸ÕëµÄ³õÊ¼»¯
+					;**********************************æœªå‘çš„ç‰Œçš„é¦–ä½æŒ‡é’ˆçš„åˆå§‹åŒ–
 					mov		lp_puke_head,0
 					mov		lp_puke_weiba,52d
-					;**********************************¸øÎ´·¢µÄÅÆ£¨´ËÊ±ÎªËùÓĞµÄÅÆ£©¸³Öµ
+					;**********************************ç»™æœªå‘çš„ç‰Œï¼ˆæ­¤æ—¶ä¸ºæ‰€æœ‰çš„ç‰Œï¼‰èµ‹å€¼
 					mov		ecx,52d
 					lea		edi,puke	
 					mov		al,1d
@@ -3036,26 +3036,26 @@ _ProcWinMain	proc	uses ebx edi esi,hWnd,uMsg,wParam,lParam
 								mov		BYTE ptr [edi+ecx-1],al
 								loop		begin5
 					;****************************************************************************************************
-					;**********************Çå0Ò»Ğ©±äÁ¿
+					;**********************æ¸…0ä¸€äº›å˜é‡
 					sub		al,al
 					mov		can_huanpai,al
 					mov		your_points,al
-					;**********************************¸øfishes·¢ÅÆ              
+					;**********************************ç»™fisheså‘ç‰Œ              
 					lea		esi,fishes
 					;add		esi,4
 					lea		edi,fish_num 
 					;add		edi,4
 					invoke	give_puke,esi,edi			                            
-					;**********************************¸øÎÒ·¢ÅÆ                  
+					;**********************************ç»™æˆ‘å‘ç‰Œ                  
 					lea		esi,my_hand                                         					
 					lea		edi,my_hand_num                                     
 					invoke	give_puke,esi,edi                                   
-					;**********************************¸ø¶ÔÊÖ£¨µçÄÔ£©·¢ÅÆ        
+					;**********************************ç»™å¯¹æ‰‹ï¼ˆç”µè„‘ï¼‰å‘ç‰Œ        
 					lea		esi,your_hand                                         					
 					lea		edi,your_hand_num                                     
 					invoke	give_puke,esi,edi                           
 					;**********************************                          
-					invoke	InvalidateRect,hWinMain,NULL,TRUE		;Ë¢ĞÂµØÍ¼    
+					invoke	InvalidateRect,hWinMain,NULL,TRUE		;åˆ·æ–°åœ°å›¾    
 																									 
 					ret              
 					
@@ -3087,7 +3087,7 @@ _ProcWinMain	proc	uses ebx edi esi,hWnd,uMsg,wParam,lParam
 		.elseif	eax ==   WM_CREATE
 					invoke	LoadIcon,hInstance,ICO_MAIN
 					invoke	SendMessage,hWnd,WM_SETICON,ICON_BIG,eax
-					mov		eax,hWnd											;´°¿Ú¾ä±ú·Åµ½hWinMainÖĞ
+					mov		eax,hWnd											;çª—å£å¥æŸ„æ”¾åˆ°hWinMainä¸­
 					mov		hWinMain,eax
 					;*********************
 					mov		my_hand1_x,width_bmp*2
@@ -3123,7 +3123,7 @@ _WinMain			proc
 		invoke	RtlZeroMemory,addr @stWndClass,sizeof @stWndClass
                                     
 ;********************************************************************
-; ×¢²á´°¿ÚÀà
+; æ³¨å†Œçª—å£ç±»
 ;********************************************************************
 		invoke	LoadCursor,0,IDC_ARROW
 		mov		@stWndClass.hCursor,eax
@@ -3132,12 +3132,12 @@ _WinMain			proc
 		mov		@stWndClass.cbSize,sizeof WNDCLASSEX
 		mov		@stWndClass.style,CS_HREDRAW or CS_VREDRAW
 		mov		@stWndClass.lpfnWndProc,offset _ProcWinMain
-		;invoke	GetStockObject,BLACK_BRUSH	ÔõÃ´»ñÈ¡À¼É«µÄ»­Ë¢£¿£¿£¿£¿£¿£¿£¿£¿£¿£¿£¿£¿
+		;invoke	GetStockObject,BLACK_BRUSH	æ€ä¹ˆè·å–å…°è‰²çš„ç”»åˆ·ï¼Ÿï¼Ÿï¼Ÿï¼Ÿï¼Ÿï¼Ÿï¼Ÿï¼Ÿï¼Ÿï¼Ÿï¼Ÿï¼Ÿ
 		mov		@stWndClass.hbrBackground,COLOR_WINDOW +	1
 		mov		@stWndClass.lpszClassName,offset szClassName
 		invoke	RegisterClassEx,addr @stWndClass
 ;********************************************************************
-; ½¨Á¢²¢ÏÔÊ¾´°¿Ú
+; å»ºç«‹å¹¶æ˜¾ç¤ºçª—å£
 ;********************************************************************
 		invoke	CreateWindowEx,WS_EX_CLIENTEDGE,offset szClassName,offset szCaptionMain,\
 					WS_MINIMIZEBOX+WS_SYSMENU,\		;WS_OVERLAPPEDWINDOW
@@ -3147,7 +3147,7 @@ _WinMain			proc
 		invoke	ShowWindow,hWinMain,SW_SHOWNORMAL
 		invoke	UpdateWindow,hWinMain
 ;********************************************************************
-; ÏûÏ¢Ñ­»·
+; æ¶ˆæ¯å¾ªç¯
 ;********************************************************************
 		.while	TRUE
 		invoke	GetMessage,addr @stMsg,NULL,0,0
